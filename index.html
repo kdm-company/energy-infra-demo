@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>デザイン確認用サンプル｜エネルギーインフラ開発会社 TOP</title>
+<meta name="description" content="デザイン確認用のサンプルページです。社名・連絡先は仮の表記です。">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   TOP（デザイン確認用サンプル）
+   部品の出どころ：
+   ・ヘッダー／ヒーロー／見出し／製品カード／CTA／フッター … 既存サイトA（SET-002・hd8・SEC-070・SEC-156・SEC-047）
+   ・ヒーローに重なる「お探しの情報はこちら」／ABOUT帯 … 既存サイトB（purposeNav・historyMinimal）
+   色は紺＋ティール、アクセント色は点のみ
+   ========================================================= */
+:root{
+  --c-navy:#0B1F33;
+  --c-ink:#081827;
+  --c-brand:#0A7A8C;
+  --c-brand-dk:#075E6C;
+  --c-brand-lt:#9FD3DA;
+  --c-sun:#E39A2D;
+  --c-bg:#FFFFFF;
+  --c-tint:#F3F6F8;
+  --c-text:#24313D;
+  --c-text-sub:#4E5B67;
+  --c-text-mute:#7D8A96;
+  --c-line:#D9E1E7;
+  --c-line-weak:#E8EDF1;
+  --ff-base:"Noto Sans JP","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+  --ff-mincho:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+  --ff-en:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --w-max:1120px;
+  --sec-y:110px;
+  /* 見出しの比率（既存サイトAと同じ：大字 : 小字 ≒ 4.2） */
+  --hd-en:clamp(50px,6.6vw,88px);
+  --hd-ja:clamp(17px,1.55vw,21px);
+}
+@media (max-width:767px){:root{--sec-y:64px}}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+@media (max-width:1080px){html{scroll-padding-top:64px}}
+body{margin:0;font-family:var(--ff-base);color:var(--c-text);background:var(--c-bg);font-size:16px;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+.wrap{width:min(90%,var(--w-max));margin:0 auto}
+.nw{display:inline-block}
+.sec{padding:var(--sec-y) 0}
+.sec--tint{background:var(--c-tint)}
+.sec:not(.sec--tint)+.sec:not(.sec--tint){padding-top:0}
+a:focus-visible,button:focus-visible{outline:3px solid var(--c-brand);outline-offset:3px}
+
+/* ---------- ヘッダー（既存サイトA SET-002） ---------- */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:9990;height:96px;line-height:1;background:#fff;border-bottom:1px solid var(--c-line-weak)}
+.hdr__inner{display:flex;align-items:center;justify-content:space-between;height:100%;padding:0 80px}
+.hdr__logo{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.hdr__logo img{width:165px;height:40px}
+.logo-ph{display:flex;align-items:center;justify-content:center;width:165px;height:40px;border:1.5px dashed var(--c-brand);font:700 15px/1 var(--ff-en);letter-spacing:.3em;text-indent:.3em;color:var(--c-brand)}
+.hdr__logo small{font-size:11px;line-height:1.5;letter-spacing:.08em;color:var(--c-text-mute);padding-left:14px;border-left:1px solid var(--c-line)}
+.gnav{display:flex;align-items:center;justify-content:flex-end;height:100%;flex:1;padding-left:40px}
+.gnav__menu{display:flex;align-items:center;height:100%;font-size:15px;font-weight:700}
+.gnav__menu>li{height:100%}
+.gnav__link{position:relative;display:flex;align-items:center;height:100%;padding:0 22px;letter-spacing:.1em;color:var(--c-navy);transition:color .4s ease-out}
+.gnav__link:hover,.gnav__menu li.is-current>.gnav__link{color:var(--c-brand)}
+.gnav__menu li.is-current>.gnav__link::after{content:"";position:absolute;bottom:0;left:22px;right:22px;height:2px;background:var(--c-brand)}
+.gnav__cta{margin-left:8px}
+.gnav__cta a{display:inline-block;min-width:200px;padding:20px 32px;color:#fff;font-weight:700;font-size:15px;letter-spacing:.1em;text-align:center;line-height:1;background:var(--c-brand);transition:background .4s ease-out}
+.gnav__cta a:hover{background:var(--c-brand-dk)}
+.gnav__tel{display:none}
+.burger{display:none;position:fixed;top:0;right:0;width:64px;height:64px;align-items:center;justify-content:center;background:var(--c-navy);border:0;z-index:9999;cursor:pointer}
+.burger__lines{position:relative;width:28px;height:20px}
+.burger__lines span{position:absolute;left:0;width:100%;height:1px;background:#fff;transition:all .4s}
+.burger__lines span:nth-of-type(1){top:0}
+.burger__lines span:nth-of-type(2){top:50%}
+.burger__lines span:nth-of-type(3){bottom:0}
+@media (max-width:1366px){.hdr__inner{padding:0 24px}}
+@media (max-width:1250px){.gnav__link{padding:0 14px}.gnav__menu li.is-current>.gnav__link::after{left:14px;right:14px}.gnav__cta a{min-width:auto}.hdr__logo small{display:none}}
+@media (max-width:1080px){
+  .hdr{height:64px}
+  .hdr__inner{padding-left:12px;padding-right:0}
+  .hdr__logo img,.logo-ph{width:132px;height:32px}
+  .burger{display:flex}
+  .gnav{position:fixed;top:64px;left:0;right:0;width:100%;height:calc(100dvh - 64px);display:block;padding:24px 7%;overflow:auto;overscroll-behavior:contain;background:var(--c-navy);transform:translateX(100%);opacity:0;pointer-events:none;transition:all .4s ease-out;z-index:9998}
+  .gnav.is-open{transform:none;opacity:1;pointer-events:auto}
+  .gnav__menu{display:block;height:auto;font-size:16px}
+  .gnav__menu>li{height:auto}
+  .gnav__menu>li:not(:last-child){border-bottom:1px solid rgba(255,255,255,.18)}
+  .gnav__link{display:flex;min-height:56px;height:auto;padding:16px 4px;color:#fff}
+  .gnav__link:hover,.gnav__menu li.is-current>.gnav__link{color:var(--c-brand-lt)}
+  .gnav__menu li.is-current>.gnav__link::after{display:none}
+  .gnav__cta{margin:24px 0 0}
+  .gnav__cta a{display:block;width:100%;padding:20px}
+  .gnav__tel{display:block;margin-top:12px;padding:18px;border:1px solid rgba(255,255,255,.4);color:#fff;text-align:center;font-weight:700;letter-spacing:.08em}
+  .burger.is-open .burger__lines span:nth-of-type(1){top:50%;transform:rotate(45deg)}
+  .burger.is-open .burger__lines span:nth-of-type(2){opacity:0}
+  .burger.is-open .burger__lines span:nth-of-type(3){bottom:auto;top:50%;transform:rotate(-45deg)}
+}
+html.is-menu-open,body.is-menu-open{overflow:hidden}
+
+/* ---------- ヒーロー（既存サイトA SET-002：自動切替＋ゆるやかなズーム） ---------- */
+.hero{position:relative;height:920px;overflow:hidden;background:var(--c-navy)}
+.hero__slides{position:absolute;inset:0;z-index:0}
+.hero__slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease-out}
+.hero__slide.is-active{opacity:1}
+.hero__ph{position:relative;width:100%;height:100%;background-size:cover;background-position:center;background-repeat:no-repeat}
+.hero__ph::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,24,39,.62) 0%,rgba(8,24,39,.36) 38%,rgba(8,24,39,.44) 68%,rgba(8,24,39,.80) 100%)}
+.hero__catch{position:relative;top:50%;z-index:1;margin:0;transform:translateY(-50%) translateY(-1em);font-family:var(--ff-mincho);font-size:56px;font-weight:500;line-height:1.5;letter-spacing:.2em;text-align:center;color:#fff;text-shadow:0 2px 26px rgba(6,10,16,.7),0 1px 5px rgba(6,10,16,.6)}
+.hero__line{display:block}
+.hero__lead{display:block;margin-top:28px;font-family:var(--ff-base);font-size:15px;font-weight:500;letter-spacing:.12em;line-height:2;color:rgba(255,255,255,.9)}
+.hero__dots{position:absolute;left:0;right:0;bottom:128px;z-index:2;display:flex;justify-content:center;gap:10px}
+.hero__dots li{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .3s,transform .3s}
+.hero__dots li.is-active{background:var(--c-sun);transform:scale(1.15)}
+.hero__note{position:absolute;right:24px;bottom:124px;z-index:2;font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.7)}
+@media (max-width:1250px){.hero__catch{font-size:46px}}
+@media (max-width:767px){
+  .hero{height:88svh;min-height:600px}
+  .hero__catch{font-size:clamp(24px,7.4vw,30px);letter-spacing:.12em;padding:0 12px;transform:translateY(-50%) translateY(-1.5em)}
+  .hero__lead{margin-top:20px;font-size:13px;letter-spacing:.06em}
+  .hero__dots{bottom:104px}
+  .hero__note{right:16px;bottom:84px;font-size:10px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero__ph{transform:scale(1.005);transition:transform 7.5s ease-out}
+  .hero__slide.is-active .hero__ph{transform:scale(1.075)}
+  .hero__catch{animation:heroFade 1.5s .2s ease-out both}
+  @keyframes heroFade{from{opacity:0}to{opacity:1}}
+}
+
+/* ---------- ヒーローに重なる案内カード（既存サイトB purposeNav × 既存サイトA お知らせ枠） ---------- */
+.purpose{position:relative;z-index:3;width:min(90%,1130px);margin:-96px auto 0;padding:36px 48px;background:#fff;border-top:3px solid var(--c-brand);box-shadow:0 14px 44px 4px rgba(11,31,51,.10)}
+.purpose h2{margin-bottom:20px;font-size:17px;font-weight:700;letter-spacing:.14em;color:var(--c-navy);text-align:center}
+.purpose__links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.purpose__links a{position:relative;display:flex;flex-direction:column;gap:4px;padding:8px 40px 8px 28px;border-left:1px solid var(--c-line)}
+.purpose__links a:first-child{border-left:0}
+.purpose__num{font:700 11px/1.6 var(--ff-en);letter-spacing:.14em;color:var(--c-brand)}
+.purpose__links strong{font-size:16px;line-height:1.7;color:var(--c-navy);transition:color .3s}
+.purpose__links small{font-size:12px;line-height:1.7;color:var(--c-text-mute)}
+.purpose__links b{position:absolute;right:12px;top:42%;color:var(--c-brand);font-weight:400;transition:transform .3s}
+.purpose__links a:hover strong{color:var(--c-brand)}
+.purpose__links a:hover b{transform:translateX(4px)}
+@media (max-width:767px){
+  .purpose{margin-top:-64px;padding:24px 20px 12px}
+  .purpose h2{margin-bottom:8px}
+  .purpose__links{grid-template-columns:1fr}
+  .purpose__links a{border-left:0;border-top:1px solid var(--c-line);padding:16px 32px 16px 4px}
+  .purpose__links a:first-child{border-top:0}
+  .purpose__links b{right:4px}
+}
+
+/* ---------- 会社の定義（既存サイトA スローガン枠） ---------- */
+.slg{position:relative;margin-top:-72px;padding:168px 0 104px;text-align:center;background:var(--c-tint);isolation:isolate;overflow:hidden}
+/* 既存サイトBのお問い合わせ帯と同じ手法：実写を12%以下の濃さで敷いて質感だけ出す */
+.slg::before{content:"";position:absolute;inset:0;z-index:-1;background:url('assets/hero-1.jpg') center 70%/cover no-repeat;opacity:.08}
+.slg::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:56px;background:var(--c-brand)}
+.slg__ja{margin:0 0 14px;font-family:var(--ff-mincho);font-size:22px;font-weight:600;letter-spacing:.1em;line-height:1.9;color:var(--c-text)}
+.slg__main{margin:0 auto 28px;max-width:960px;font-family:var(--ff-mincho);font-size:31px;font-weight:700;letter-spacing:.08em;line-height:1.8;color:var(--c-navy)}
+.slg__sub{max-width:760px;margin:0 auto;font-size:15px;line-height:2.05;color:var(--c-text-sub)}
+@media (max-width:767px){
+  .slg{margin-top:-40px;padding:96px 0 64px;text-align:left}
+  .slg::after{display:none}
+  .slg__ja{font-size:16px}
+  .slg__main{font-size:21px;letter-spacing:.05em}
+  .slg__sub{font-size:14px}
+  .slg .nw{display:inline}
+  .slg__ja,.slg__main{word-break:auto-phrase}
+}
+
+/* ---------- 見出し（既存サイトA hd8：小さい日本語＋大きい英字） ---------- */
+.hd8{margin:0 0 44px}
+.hd8__ja{display:flex;align-items:center;gap:18px;margin:0 0 6px;font-size:var(--hd-ja);font-weight:700;letter-spacing:.16em;line-height:1.5;color:var(--c-navy)}
+.hd8__ja::before,.hd8__ja::after{content:none;flex:none;display:block;width:56px;height:1px;background:var(--c-brand)}
+.hd8__en{margin:0;font-family:var(--ff-en);font-size:var(--hd-en);font-weight:700;line-height:.98;letter-spacing:.005em;color:var(--c-brand)}
+.hd8--center{text-align:center}
+.hd8--center .hd8__ja{justify-content:center}
+.hd8--center .hd8__ja::before,.hd8--center .hd8__ja::after{content:""}
+.hd8--left .hd8__ja::after{content:""}
+.hd8--right{text-align:right}
+.hd8--right .hd8__ja{justify-content:flex-end}
+.hd8--right .hd8__ja::before{content:""}
+.hd8-block--right{margin-bottom:56px}
+.hd8-block--right .hd8{margin-bottom:24px}
+.hd8__lead{max-width:640px;margin:0 0 0 auto;text-align:right;font-size:15px;line-height:1.95;color:var(--c-text-sub)}
+@media (max-width:767px){
+  .hd8{margin-bottom:30px}
+  .hd8__ja{gap:12px}
+  .hd8__ja::before,.hd8__ja::after{width:34px}
+  .hd8__lead{font-size:14px}
+}
+
+/* ---------- 事業内容（既存サイトA SEC-152：淡色パネルに白い枠3つ） ---------- */
+.svc__lead{max-width:760px;margin:-20px auto 0;text-align:center;font-size:15px;color:var(--c-text-sub)}
+.svc__cont{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:48px;padding:56px 60px 50px;background:var(--c-tint);counter-reset:step}
+.svc__item{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--c-line);text-align:center}
+.svc__head{padding:26px 16px 24px;background:var(--c-navy)}
+.svc__item:nth-child(2) .svc__head{background:#0C3D55}
+.svc__item:nth-child(3) .svc__head{background:var(--c-brand)}
+.svc__no{font-family:var(--ff-en);font-size:13px;letter-spacing:.2em;color:var(--c-brand-lt)}
+.svc__item:nth-child(3) .svc__no{color:#DDF1F3}
+.svc__no::after{content:"";display:block;width:28px;height:1px;background:rgba(255,255,255,.35);margin:10px auto 12px}
+.svc__ttl{font-size:22px;font-weight:900;letter-spacing:.1em;line-height:1.5;color:#fff}
+.svc__body{display:flex;flex-direction:column;flex:1;padding:24px 24px 28px}
+/* 工程の流れを示す矢印（PCは右向き、SPは下向き） */
+.svc__item+.svc__item::before{content:"";position:absolute;z-index:2;top:46px;left:-14px;width:10px;height:10px;border-top:2px solid var(--c-brand);border-right:2px solid var(--c-brand);transform:rotate(45deg)}
+.svc__close{margin-top:auto;padding:16px 18px;background:var(--c-tint);font-size:13.5px;line-height:1.85;color:var(--c-navy);text-align:left}
+.svc__steps+.svc__close{margin-top:24px}
+.svc__txt{font-size:14px;line-height:1.85;color:var(--c-text-sub);text-align:left}
+.svc__steps{width:100%;margin-top:20px;border-top:1px solid var(--c-line-weak);text-align:left}
+.svc__steps li{counter-increment:step;display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--c-line-weak);font-size:14.5px;font-weight:500;color:var(--c-navy)}
+.svc__steps li::before{content:counter(step,decimal-leading-zero);flex:none;width:22px;font:700 11px/1 var(--ff-en);letter-spacing:.08em;color:var(--c-brand)}
+@media (max-width:1250px){.svc__cont{gap:14px;padding:48px 40px 40px}}
+@media (max-width:900px){.svc__cont{grid-template-columns:1fr;padding:24px 20px 20px;gap:28px}.svc__lead{text-align:left}.svc__item+.svc__item::before{top:-20px;left:calc(50% - 6px);transform:rotate(135deg)}}
+
+/* ---------- 技術・製品（既存サイトA SEC-070：分野タグ付きカード） ---------- */
+.works{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.work__media{border:1px solid var(--c-line-weak);background:#fff;overflow:hidden}
+.work__media img{width:100%;height:220px;object-fit:contain;padding:12px;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.work:hover .work__media img{transform:scale(1.03)}
+.work__media--fig{display:flex;align-items:center;justify-content:center;height:222px;background:#fff}
+.ems-fig{width:100%;height:100%}
+.ems-fig text{font-family:var(--ff-base);text-anchor:middle}
+.ef-rack rect{fill:#F3F6F8;stroke:var(--c-navy);stroke-width:1.6}
+.ef-rack path,.ef-wire{fill:none;stroke:var(--c-navy);stroke-width:1.6}
+.ef-box{fill:#fff;stroke:var(--c-navy);stroke-width:1.6}
+.ef-box--ems{fill:var(--c-navy)}
+.ef-box--grid{stroke:var(--c-brand);stroke-width:2}
+.ef-in{font-size:17px;font-weight:700;fill:var(--c-navy);letter-spacing:.06em}
+.ef-in--w{fill:#fff}
+.ef-in--b{fill:var(--c-brand-dk)}
+.ef-lb{font-size:15px;fill:var(--c-text-sub)}
+.ems-fig .ef-cap{font-size:14px;fill:var(--c-text-mute);text-anchor:start}
+.work__tags{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 12px}
+.tag{font-size:12px;letter-spacing:.06em;padding:3px 10px;border:1px solid var(--c-brand-lt);color:var(--c-brand-dk);background:#F1F8F9}
+.work__ttl{margin:0 0 10px;font-size:17px;font-weight:700;line-height:1.6;color:var(--c-navy)}
+.work__txt{font-size:14px;line-height:1.85;color:var(--c-text-sub)}
+.card-link{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:6px 0;font-size:14px;font-weight:700;color:var(--c-brand);border-bottom:1px solid var(--c-brand-lt)}
+.card-link:hover{color:var(--c-brand-dk);border-color:currentColor}
+.center-btn{text-align:center;margin-top:56px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:0 40px;border:1px solid var(--c-navy);font-size:15px;font-weight:700;letter-spacing:.08em;color:var(--c-navy);transition:background .3s,color .3s,border-color .3s}
+.btn:hover{background:var(--c-brand);border-color:var(--c-brand);color:#fff}
+@media (max-width:900px){.works{grid-template-columns:1fr;gap:40px}.work__media img,.work__media--fig{height:56vw;max-height:300px}}
+
+/* ---------- 実績・提携（既存サイトA お知らせ枠の行組み） ---------- */
+.rec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.rec__box{padding:36px 40px 28px;background:#fff;border-top:3px solid var(--c-brand)}
+.rec__ttl{margin-bottom:12px;font-size:19px;font-weight:700;letter-spacing:.12em;line-height:1.4;color:var(--c-navy)}
+.rec__list li{display:flex;align-items:baseline;gap:20px;padding:14px 0}
+.rec__list li+li{border-top:1px solid var(--c-line-weak)}
+.rec__lead{max-width:44em;margin:-16px 0 40px;font-size:15px;color:var(--c-text-sub)}
+.rec__date em{display:block;width:fit-content;margin-top:8px;padding:1px 8px;font-style:normal;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--c-brand-dk);border:1px solid var(--c-brand-lt);background:#F1F8F9}
+.rec__date{flex:none;width:84px;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--c-brand-dk);font-variant-numeric:tabular-nums}
+.rec__txt{flex:1;font-size:15px;line-height:1.75;color:var(--c-text)}
+.rec__txt b{display:block;font-weight:700;color:var(--c-navy)}
+.rec__txt small{display:block;font-size:13.5px;color:var(--c-text-sub)}
+@media (max-width:900px){
+  .rec{grid-template-columns:1fr;gap:20px}
+  .rec__box{padding:24px 20px 12px}
+  .rec__list li{flex-wrap:wrap;gap:2px 12px;padding:12px 0}
+  .rec__date{width:auto;display:flex;align-items:center;gap:10px}
+  .rec__date em{margin-top:0}
+  .rec__lead{margin:-8px 0 28px;font-size:14px}
+  .rec__txt{flex:1 1 100%;font-size:14.5px}
+}
+
+/* ---------- ABOUT（既存サイトB historyMinimal） ---------- */
+.about{padding:var(--sec-y) 0}
+.about__layout{position:relative;display:grid;grid-template-columns:.88fr 1.12fr;gap:88px;align-items:start;padding:62px 0 10px;border-top:1px solid var(--c-line)}
+.about__layout::before{content:"";position:absolute;left:calc(44% - 1px);top:62px;bottom:10px;width:1px;background:var(--c-line)}
+.about__eyebrow{display:flex;align-items:center;gap:14px;font:700 12px/1.6 var(--ff-en);letter-spacing:.18em;color:var(--c-brand)}
+.about__eyebrow::before{content:"";width:34px;height:1px;background:var(--c-brand)}
+.about__intro h2{margin-top:24px;font-family:var(--ff-mincho);font-size:clamp(30px,3.35vw,42px);font-weight:600;line-height:1.72;letter-spacing:.075em;color:var(--c-navy)}
+.about__story{padding-top:8px}
+.about__story p{font-size:15px;line-height:2.2;color:var(--c-text-sub)}
+.about__facts{display:flex;flex-wrap:wrap;gap:20px 56px;margin:28px 0 8px;padding:20px 0;border-top:1px solid var(--c-line);border-bottom:1px solid var(--c-line)}
+.about__facts div{display:flex;flex-direction:column;gap:5px}
+.about__facts span{font-size:12px;color:var(--c-text-mute)}
+.about__facts strong{font-size:18px;font-weight:600;color:var(--c-navy)}
+.about__link{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:52px;padding:12px 0;border-bottom:1px solid var(--c-line);font-size:14px;font-weight:700;color:var(--c-brand)}
+.about__link:hover{color:var(--c-navy)}
+.about__link span{transition:transform .3s}
+.about__link:hover span{transform:translateX(4px)}
+@media (max-width:900px){
+  .about__layout{grid-template-columns:1fr;gap:28px;padding-top:34px}
+  .about__layout::before{display:none}
+  .about__intro h2{font-size:27px;margin-top:16px}
+  .about__facts{gap:16px 36px}
+  .about__facts strong{font-size:16px}
+}
+
+/* ---------- お問い合わせ（既存サイトA SEC-156） ---------- */
+.cta{position:relative;padding:96px 0;background:var(--c-navy);color:#fff;text-align:center}
+.cta__inner{width:min(90%,960px);margin:0 auto}
+.cta__txt{max-width:720px;margin-left:auto;margin-right:auto}
+.cta__ttl{margin-bottom:24px;font-family:var(--ff-mincho);font-weight:400}
+.cta__ttl-en{display:block;margin-bottom:12px;font-family:var(--ff-en);font-size:18px;font-weight:700;letter-spacing:.24em;text-indent:.24em;line-height:1;color:var(--c-brand-lt)}
+.cta__ttl-jp{display:block;font-size:48px;line-height:1.25;letter-spacing:.15em}
+.cta__txt{margin-bottom:40px;font-size:15px;line-height:2;color:#D5DEE5}
+/* 既存サイトBの contactFrame：フォームとお電話を同じ大きさの2枠で */
+.cta__grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:880px;margin:0 auto}
+.cta__mail,.cta__phone{display:flex;align-items:center;justify-content:center;min-height:150px;padding:26px 24px}
+.cta__mail{gap:28px;background:var(--c-brand);color:#fff;transition:background .3s}
+.cta__mail:hover{background:var(--c-brand-dk)}
+.cta__mail-txt{display:flex;flex-direction:column;gap:8px;text-align:left}
+.cta__mail small{font-size:13px;font-weight:500;color:#DDF1F3}
+.cta__mail strong{font-size:22px;font-weight:700;letter-spacing:.08em}
+.cta__arrow{font-size:24px;transition:transform .3s}
+.cta__mail:hover .cta__arrow{transform:translateX(4px)}
+.cta__phone{flex-direction:column;gap:6px;background:#fff;color:var(--c-navy)}
+.cta__phone span{font-size:14px;font-weight:700}
+.cta__phone strong{font-family:var(--ff-en);font-size:34px;font-weight:700;letter-spacing:.04em;line-height:1.3;font-variant-numeric:tabular-nums}
+.cta__phone small{display:none;font-size:12px;color:var(--c-text-mute)}
+@media (max-width:767px){
+  .cta{padding:56px 0;text-align:left}
+  .cta__ttl-en{font-size:15px;text-indent:0}
+  .cta__ttl-jp{font-size:34px}
+  .cta__txt{margin-bottom:28px;font-size:14px}
+  .cta__grid{grid-template-columns:1fr;gap:14px}
+  .cta__mail,.cta__phone{min-height:120px}
+  .cta__mail strong{font-size:20px}
+  .cta__phone strong{font-size:30px}
+  .cta__phone small{display:block}
+}
+
+/* ---------- フッター（既存サイトA SEC-047） ---------- */
+.ftr{padding-top:72px;background:var(--c-ink);color:#B7C4CF;border-top:5px solid var(--c-brand)}
+.ftr__top{display:flex;gap:56px;align-items:flex-start}
+.ftr__brand{width:320px;flex:none}
+.ftr__name{font-size:16px;font-weight:700;line-height:1.6;color:#fff}
+.ftr__name span{display:block;font-size:12px;font-weight:400;letter-spacing:.06em;color:#8FA0AE}
+.ftr__addr{margin-top:18px;font-size:13px;line-height:1.95;color:#A6B4C0}
+.ftr__addr a{color:#fff}
+.ftr__navs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;flex:1}
+.ftr__ttl{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--c-brand-lt)}
+.ftr__list li{padding:5px 0;font-size:14px}
+.ftr__list a{color:#C9D3DB}
+.ftr__list a:hover{color:#fff}
+.ftr__bar{margin-top:56px;border-top:1px solid rgba(183,196,207,.16);color:#8FA0AE}
+.ftr__bar-inner{display:flex;justify-content:space-between;align-items:center;min-height:56px;font-size:12px}
+.ftr__bar a{margin-left:20px;color:#A6B4C0}
+.ftr__bar a:hover{color:#fff}
+@media (max-width:840px){
+  .ftr{padding-top:48px}
+  .ftr__top{flex-direction:column;gap:36px}
+  .ftr__brand{width:100%}
+  .ftr__navs{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+  .ftr__bar{margin-top:40px}
+  .ftr__bar-inner{flex-direction:column-reverse;align-items:flex-start;gap:8px;padding:16px 0 96px}
+  .ftr__bar a{margin:0 16px 0 0}
+}
+
+/* ---------- スマホ下部の固定バー ---------- */
+.sp-bar{display:none}
+@media (max-width:767px){
+  .sp-bar{position:fixed;left:0;right:0;bottom:0;z-index:9000;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 16px calc(8px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--c-line)}
+  .sp-bar a{display:flex;align-items:center;justify-content:center;min-height:52px;font-size:15px;font-weight:700;letter-spacing:.06em}
+  .sp-bar .tel{border:1px solid var(--c-navy);color:var(--c-navy)}
+  .sp-bar .form{background:var(--c-brand);color:#fff}
+}
+
+/* ---------- スクロール連動の淡いフェードイン（既存サイトAと同じ） ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .rv{opacity:0;transform:translateY(16px);transition:opacity .85s cubic-bezier(.2,.7,.3,1),transform .85s cubic-bezier(.2,.7,.3,1)}
+  .rv.is-in{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr__inner">
+    <a class="hdr__logo" href="./" aria-label="トップページ">
+      <span class="logo-ph" role="img" aria-label="ロゴ（仮）">LOGO</span>
+      <small>株式会社<br>〇〇〇〇ホールディングス</small>
+    </a>
+    <nav class="gnav" id="gnav" aria-label="グローバルナビゲーション">
+      <ul class="gnav__menu">
+        <li class="is-current"><a class="gnav__link" href="./">ホーム</a></li>
+        <li><a class="gnav__link" href="#service">事業内容</a></li>
+        <li><a class="gnav__link" href="#products">技術・製品</a></li>
+        <li><a class="gnav__link" href="#record">実績・提携</a></li>
+        <li><a class="gnav__link" href="#about">会社情報</a></li>
+      </ul>
+      <div class="gnav__cta"><a href="#contact">お問い合わせ</a></div>
+      <a class="gnav__tel" href="#contact">電話する 00-0000-0000</a>
+    </nav>
+    <button class="burger" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="gnav"><span class="burger__lines"><span></span><span></span><span></span></span></button>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" aria-label="メインビジュアル">
+  <div class="hero__slides">
+    <div class="hero__slide is-active"><div class="hero__ph" style="background-image:url('assets/hero-1.jpg')"></div></div>
+    <div class="hero__slide"><div class="hero__ph" style="background-image:url('assets/hero-2.jpg')"></div></div>
+  </div>
+  <h1 class="hero__catch">
+    <span class="hero__line">エネルギーを、</span>
+    <span class="hero__line">設備から資産へ。</span>
+    <span class="hero__lead"><span class="nw">太陽光・蓄電システム・EMSで、</span><span class="nw">分散型エネルギー資産を開発・運用する。</span></span>
+  </h1>
+  <ul class="hero__dots"><li class="is-active"></li><li></li></ul>
+  <p class="hero__note">画像はイメージです</p>
+</section>
+
+<section class="purpose" aria-labelledby="purpose-title">
+  <h2 id="purpose-title">お探しの情報はこちら</h2>
+  <div class="purpose__links">
+    <a href="#service"><span class="purpose__num">01</span><strong>事業の内容を知りたい</strong><small>開発から資産化までの流れ</small><b aria-hidden="true">→</b></a>
+    <a href="#products"><span class="purpose__num">02</span><strong>製品・仕様を確認したい</strong><small>蓄電システム・太陽光・EMS</small><b aria-hidden="true">→</b></a>
+    <a href="#record"><span class="purpose__num">03</span><strong>実績・会社情報を見たい</strong><small>供給実績・提携先・会社概要</small><b aria-hidden="true">→</b></a>
+  </div>
+</section>
+
+<section class="slg" aria-label="私たちの役割">
+  <div class="wrap">
+    <p class="slg__ja">私たちは、蓄電池設備そのものを販売する会社ではなく、</p>
+    <p class="slg__main"><span class="nw">電力系統に接続された分散型エネルギー資産を</span><span class="nw">継続的に開発し、運用・収益化・資産化する</span><span class="nw">インフラ開発会社です。</span></p>
+    <p class="slg__sub">土地・設置場所の確保から系統接続、機器調達、EPC、EMS、アグリゲーターとの連携、市場運用、保守管理、資産売却までを一体的に組み立てることで、地域ごとに小規模なエネルギーノードを多数構築します。</p>
+  </div>
+</section>
+
+<section class="sec" id="service" aria-labelledby="service-title">
+  <div class="wrap">
+    <div class="hd8 hd8--center"><p class="hd8__ja">事業内容</p><h2 class="hd8__en" id="service-title">SERVICE</h2></div>
+    <p class="svc__lead">用地・系統・機器・運用・売却の条件を最初からつなげて検討し、3つの段階で事業を組み立てます。</p>
+    <ul class="svc__cont">
+      <li class="svc__item">
+        <div class="svc__head"><span class="svc__no">01</span><h3 class="svc__ttl">開発</h3></div>
+        <div class="svc__body">
+          <p class="svc__txt">用地と系統接続の条件を整え、機器を調達し、EPCで設備を形にします。</p>
+          <ol class="svc__steps"><li>土地・設置場所の確保</li><li>系統接続</li><li>機器調達</li><li>EPC</li></ol>
+        </div>
+      </li>
+      <li class="svc__item">
+        <div class="svc__head"><span class="svc__no">02</span><h3 class="svc__ttl">運用・収益化</h3></div>
+        <div class="svc__body">
+          <p class="svc__txt">EMSで充放電を制御し、アグリゲーターと連携して電力市場で運用。保守管理まで継続して担います。</p>
+          <ol class="svc__steps"><li>EMS</li><li>アグリゲーターとの連携</li><li>市場運用</li><li>保守管理</li></ol>
+        </div>
+      </li>
+      <li class="svc__item">
+        <div class="svc__head"><span class="svc__no">03</span><h3 class="svc__ttl">資産化</h3></div>
+        <div class="svc__body">
+          <p class="svc__txt">稼働した設備を、エネルギー資産として売却します。</p>
+          <ol class="svc__steps"><li>資産売却</li></ol>
+          <p class="svc__close">設備の導入で終わらせず、資産として売却するところまでを事業の範囲としています。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="products" aria-labelledby="products-title">
+  <div class="wrap">
+    <div class="hd8-block--right">
+      <div class="hd8 hd8--right"><p class="hd8__ja">技術・製品</p><h2 class="hd8__en" id="products-title">PRODUCTS</h2></div>
+      <p class="hd8__lead">エネルギー資産を構成する、蓄電・発電・制御の3つの技術を取り扱っています。仕様の詳細は各製品ページでご覧いただけます。</p>
+    </div>
+    <div class="works">
+      <article class="work">
+        <div class="work__media"><img src="assets/product-bess.jpg" width="1000" height="693" loading="lazy" alt="20フィート液冷蓄電コンテナシステムの外観"></div>
+        <div class="work__tags"><span class="tag">液冷式</span><span class="tag">3.72MWh</span></div>
+        <h3 class="work__ttl">蓄電システム（BESS）</h3>
+        <p class="work__txt">系統用・産業用の蓄電プロジェクトに向けた、20フィート液冷蓄電コンテナシステムとESS用液冷蓄電一体ユニット。2023年10月から自社製蓄電池の開発も進めています。</p>
+        <a class="card-link" href="#">製品を見る <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="work">
+        <div class="work__media"><img src="assets/product-solar.jpg" width="1000" height="693" loading="lazy" alt="N型太陽光モジュールの表面と裏面"></div>
+        <div class="work__tags"><span class="tag">N型・P型</span><span class="tag">545–670W</span></div>
+        <h3 class="work__ttl">太陽光モジュール</h3>
+        <p class="work__txt">海外メーカーとの包括的業務提携のもと、シングルガラス・ダブルガラスのモジュールを国内外へ供給しています。</p>
+        <a class="card-link" href="#">製品を見る <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="work">
+        <div class="work__media work__media--fig">
+          <svg class="ems-fig" viewBox="0 0 460 300" role="img" aria-labelledby="ems-fig-t">
+            <title id="ems-fig-t">蓄電池の状態をBMSが管理し、EMSが充放電を制御して系統につなぐ構成の概念図</title>
+            <g class="ef-rack"><rect x="22" y="104" width="30" height="78"/><path d="M22 124h30M22 143h30M22 162h30"/></g>
+            <g class="ef-rack"><rect x="58" y="104" width="30" height="78"/><path d="M58 124h30M58 143h30M58 162h30"/></g>
+            <g class="ef-rack"><rect x="94" y="104" width="30" height="78"/><path d="M94 124h30M94 143h30M94 162h30"/></g>
+            <path class="ef-wire" d="M124 143H164M240 143H274M350 143H372"/>
+            <rect class="ef-box" x="164" y="118" width="76" height="50"/>
+            <text class="ef-in" x="202" y="149">BMS</text>
+            <rect class="ef-box ef-box--ems" x="274" y="118" width="76" height="50"/>
+            <text class="ef-in ef-in--w" x="312" y="149">EMS</text>
+            <rect class="ef-box ef-box--grid" x="372" y="118" width="66" height="50"/>
+            <text class="ef-in ef-in--b" x="405" y="149">系統</text>
+            <text class="ef-lb" x="73" y="210">蓄電池</text>
+            <text class="ef-lb" x="202" y="196">状態管理</text>
+            <text class="ef-lb" x="312" y="196">充放電制御</text>
+            <text class="ef-lb" x="405" y="196">市場運用</text>
+            <text class="ef-cap" x="22" y="52">BMS・EMSの構成（概念図）</text>
+          </svg>
+        </div>
+        <div class="work__tags"><span class="tag">状態管理</span><span class="tag">充放電制御</span></div>
+        <h3 class="work__ttl">BMS・EMS</h3>
+        <p class="work__txt">蓄電所や充放電需要のある事業者に適したBMS・EMS製品を提供。2024年3月から、国内向け産業用リチウム蓄電池の状態管理システムを共同開発しています。</p>
+        <a class="card-link" href="#">EMSについて見る <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+    <div class="center-btn"><a class="btn" href="#">製品一覧を見る <span aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+
+<section class="sec sec--tint" id="record" aria-labelledby="record-title">
+  <div class="wrap">
+    <div class="hd8 hd8--left"><p class="hd8__ja">実績・提携</p><h2 class="hd8__en" id="record-title">RECORD</h2></div>
+    <p class="rec__lead">電力会社グループの案件への供給実績と、国内外のメーカーとの技術・供給提携です。</p>
+    <div class="rec">
+      <div class="rec__box">
+        <h3 class="rec__ttl">供給・採用の実績</h3>
+        <ul class="rec__list">
+          <li><span class="rec__date">2023.06<em>採用</em></span><span class="rec__txt"><b>大手電力会社グループ A社 PPA事業</b><small>提携メーカー製太陽光モジュールが初採用</small></span></li>
+          <li><span class="rec__date">2023.11<em>供給</em></span><span class="rec__txt"><b>大手電力会社グループ B社</b><small>太陽光モジュールの供給を開始</small></span></li>
+          <li><span class="rec__date">2023.11<em>供給</em></span><span class="rec__txt"><b>電機商社 C社向け PPA案件</b><small>提携メーカー製太陽光モジュールの供給を開始</small></span></li>
+        </ul>
+      </div>
+      <div class="rec__box">
+        <h3 class="rec__ttl">技術・供給の提携先</h3>
+        <ul class="rec__list">
+          <li><span class="rec__date">2022.03<em>提携</em></span><span class="rec__txt"><b>太陽光モジュールメーカー D社</b><small>太陽光モジュールに関する包括的業務提携</small></span></li>
+          <li><span class="rec__date">2022.08<em>協業</em></span><span class="rec__txt"><b>蓄電池メーカー E社</b><small>PCSを含む家庭用蓄電池システム分野での協業</small></span></li>
+          <li><span class="rec__date">2023.04<em>販売提携</em></span><span class="rec__txt"><b>販売会社 F社</b><small>住宅メーカー向け家庭用蓄電ソリューションの販売提携</small></span></li>
+          <li><span class="rec__date">2023.10<em>提携</em></span><span class="rec__txt"><b>蓄電池メーカー G社</b><small>日本国内向け産業用蓄電池に関する包括的業務提携</small></span></li>
+          <li><span class="rec__date">2024.03<em>共同開発</em></span><span class="rec__txt"><b>エネルギー機器メーカー H社</b><small>国内向け産業用リチウム蓄電池状態管理システムの共同開発</small></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about" aria-labelledby="about-title">
+  <div class="wrap about__layout">
+    <div class="about__intro">
+      <p class="about__eyebrow">ABOUT US</p>
+      <h2 id="about-title">大阪から、<br>地域ごとの<br>エネルギーノードを。</h2>
+    </div>
+    <div class="about__story">
+      <p>2021年2月に設立し、2022年10月に再生可能エネルギー事業への一本化に伴って現社名へ変更しました。2023年8月に本社を大阪市内へ移転し、現在は大阪本社と海外子会社を拠点に事業を展開しています。</p>
+      <div class="about__facts">
+        <div><span>設立</span><strong>2021年2月</strong></div>
+        <div><span>代表取締役</span><strong>〇〇 〇〇</strong></div>
+        <div><span>拠点</span><strong>大阪本社／海外子会社</strong></div>
+      </div>
+      <a class="about__link" href="#">会社概要を見る <span aria-hidden="true">→</span></a>
+      <a class="about__link" href="#">沿革を見る <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact" aria-labelledby="contact-title">
+  <div class="cta__inner">
+    <h2 class="cta__ttl" id="contact-title"><span class="cta__ttl-en">CONTACT</span><span class="cta__ttl-jp">お問い合わせ</span></h2>
+    <p class="cta__txt">系統用蓄電所、産業用蓄電、太陽光モジュール、BMS・EMS、発電所の運営、協業に関するご相談を承ります。設置場所・想定容量・時期など、分かる範囲でお知らせください。</p>
+    <div class="cta__grid">
+      <a class="cta__mail" href="#"><span class="cta__mail-txt"><small>プロジェクトのご相談はこちら</small><strong>お問い合わせフォーム</strong></span><span class="cta__arrow" aria-hidden="true">→</span></a>
+      <a class="cta__phone" href="#contact" aria-label="電話で問い合わせる 00-0000-0000"><span>お電話でのお問い合わせ</span><strong>00-0000-0000</strong><small>タップして電話をかける</small></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__top">
+      <div class="ftr__brand">
+        <p class="ftr__name">株式会社〇〇〇〇ホールディングス<span>Sample Holdings Co., Ltd.</span></p>
+        <p class="ftr__addr">〒000-0000<br>大阪府大阪市〇〇区〇〇 0丁目0番0号<br>〇〇ビル0階<br>TEL <a href="#contact">00-0000-0000</a><br>法人番号 0000000000000</p>
+      </div>
+      <nav class="ftr__navs" aria-label="サイトマップ">
+        <div><p class="ftr__ttl">事業・製品</p><ul class="ftr__list"><li><a href="#service">事業内容</a></li><li><a href="#">蓄電システム</a></li><li><a href="#">太陽光モジュール</a></li><li><a href="#">EMS</a></li><li><a href="#">発電所運営</a></li></ul></div>
+        <div><p class="ftr__ttl">会社情報</p><ul class="ftr__list"><li><a href="#">会社概要</a></li><li><a href="#">沿革</a></li><li><a href="#record">実績・提携</a></li><li><a href="#">業界動向</a></li></ul></div>
+        <div><p class="ftr__ttl">お問い合わせ</p><ul class="ftr__list"><li><a href="#">お問い合わせフォーム</a></li><li><a href="#contact">電話でのお問い合わせ</a></li></ul></div>
+      </nav>
+    </div>
+  </div>
+  <div class="ftr__bar">
+    <div class="wrap ftr__bar-inner">
+      <span>© 2026 Sample Holdings Co., Ltd.（デザイン確認用サンプル・社名と連絡先は仮の表記です）</span>
+      <span><a href="#">プライバシーポリシー</a><a href="#">サイトのご利用について</a></span>
+    </div>
+  </div>
+</footer>
+
+<nav class="sp-bar" aria-label="お問い合わせ">
+  <a class="tel" href="#contact">電話する</a>
+  <a class="form" href="#contact">お問い合わせ</a>
+</nav>
+
+<script>
+/* メニュー開閉（既存サイトAと同じ） */
+(() => {
+  const btn = document.querySelector('.burger');
+  const nav = document.querySelector('.gnav');
+  if (!btn || !nav) return;
+  const set = (open) => {
+    nav.classList.toggle('is-open', open);
+    btn.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    document.documentElement.classList.toggle('is-menu-open', open);
+    document.body.classList.toggle('is-menu-open', open);
+  };
+  btn.addEventListener('click', () => set(!nav.classList.contains('is-open')));
+  nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => set(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+})();
+
+/* ヒーロースライダー：6秒ごとの自動切替（タブ非表示中は停止） */
+(() => {
+  const slides = Array.from(document.querySelectorAll('.hero__slide'));
+  const dots = Array.from(document.querySelectorAll('.hero__dots li'));
+  if (slides.length < 2) return;
+  let i = 0, timer = null;
+  const show = (n) => {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+    dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+  };
+  const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+  const start = () => { stop(); timer = setInterval(() => show(i + 1), 6000); };
+  dots.forEach((d, k) => {
+    d.setAttribute('role', 'button');
+    d.setAttribute('tabindex', '0');
+    d.setAttribute('aria-label', (k + 1) + '枚目の画像を表示');
+    d.addEventListener('click', () => { show(k); start(); });
+    d.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(k); start(); } });
+  });
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.addEventListener('visibilitychange', () => { document.hidden || reduce ? stop() : start(); });
+  if (!reduce) start();
+})();
+
+/* スクロールに合わせた淡いフェードイン（JSが動かない環境では最初から通常表示） */
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const sel = '.slg .wrap,.hd8,.hd8__lead,.svc__lead,.svc__item,.work,.rec__box,.about__intro,.about__story,.cta__inner';
+  const els = Array.from(document.querySelectorAll(sel)).filter((el) => el.offsetParent !== null);
+  els.forEach((el) => el.classList.add('rv'));
+  els.forEach((el) => {
+    const sibs = Array.from(el.parentElement.children).filter((n) => n.classList.contains('rv'));
+    el.style.transitionDelay = Math.min(sibs.indexOf(el), 4) * 70 + 'ms';
+  });
+  let pending = els.slice(), ticking = false;
+  const reveal = () => {
+    ticking = false;
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    pending = pending.filter((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.94 && r.bottom > 0) { el.classList.add('is-in'); return false; }
+      return true;
+    });
+    if (!pending.length) { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); }
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(reveal); } };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  window.addEventListener('load', reveal);
+  reveal();
+  setTimeout(() => { els.forEach((el) => el.classList.add('is-in')); }, 8000);
+})();
+</script>
+</body>
+</html>
