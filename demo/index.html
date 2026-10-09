@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>デモのご案内｜多言語対応・ブログ投稿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=3">
+<style>
+/* デモ案内ページ：サイト本体と同じトークンを使い、見積もりは罫線の表で落ち着かせる */
+.g-top{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:16px;height:72px;padding:0 32px;background:#fff;border-bottom:1px solid var(--c-line-weak)}
+.g-top .logo-ph{width:120px;height:32px;font-size:12px}
+.g-top p{font-size:14px;font-weight:700;color:var(--c-navy);letter-spacing:.06em}
+.g-top a.btn{margin-left:auto;min-height:44px;padding:0 20px;font-size:13.5px}
+.g-head{margin-top:72px}
+.g-head .page-head__lead{max-width:44em;margin-top:18px;font-size:15px;line-height:2;color:#D5DEE5}
+@media (max-width:767px){.g-top{height:60px;padding:0 16px}.g-top p{display:none}.g-head{margin-top:60px}}
+
+.g-item{display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px;padding:56px 0;border-top:1px solid var(--c-line)}
+.g-item:first-child{border-top:0;padding-top:0}
+.g-no{font:700 13px/1 var(--ff-en);letter-spacing:.2em;color:var(--c-brand)}
+.g-item h2{margin-top:12px;font-size:24px;font-weight:700;line-height:1.5;color:var(--c-navy);letter-spacing:.04em}
+.g-item p{font-size:15px;line-height:2;color:var(--c-text-sub)}
+.g-item p+p{margin-top:12px}
+.g-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.g-btns .btn--fill{background:var(--c-brand);border-color:var(--c-brand);color:#fff}
+.g-btns .btn--fill:hover{background:var(--c-brand-dk);border-color:var(--c-brand-dk)}
+.g-note{margin-top:20px;padding:14px 18px;background:var(--c-tint);font-size:13.5px;line-height:1.9;color:var(--c-text-sub)}
+@media (max-width:900px){.g-item{grid-template-columns:1fr;gap:16px;padding:44px 0}}
+
+/* 言語の対応状況 */
+.g-langs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:24px;border:1px solid var(--c-line)}
+.g-langs div{padding:16px 18px}
+.g-langs div+div{border-left:1px solid var(--c-line)}
+.g-langs b{display:block;font-size:16px;color:var(--c-navy)}
+.g-langs span{display:inline-block;margin-top:6px;padding:1px 10px;font-size:12px;font-weight:700}
+.g-langs .ok{color:var(--c-brand-dk);background:#F1F8F9;border:1px solid var(--c-brand-lt)}
+.g-langs .soon{color:#8A5A0B;background:#FFF1DC;border:1px solid #F1D29C}
+@media (max-width:640px){.g-langs{grid-template-columns:1fr}.g-langs div+div{border-left:0;border-top:1px solid var(--c-line)}}
+
+/* 操作の手順 */
+.g-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px;counter-reset:s}
+.g-steps li{counter-increment:s;padding:18px 18px 20px;background:#fff;border:1px solid var(--c-line)}
+.g-steps li::before{content:"STEP " counter(s);display:block;margin-bottom:6px;font:700 11px/1 var(--ff-en);letter-spacing:.16em;color:var(--c-brand)}
+.g-steps b{display:block;font-size:15.5px;color:var(--c-navy)}
+.g-steps small{display:block;margin-top:4px;font-size:13px;line-height:1.8;color:var(--c-text-sub)}
+.g-feat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;margin-top:20px;border-top:1px solid var(--c-line-weak)}
+.g-feat li{padding:12px 0;border-bottom:1px solid var(--c-line-weak);font-size:14.5px;color:var(--c-text)}
+.g-feat li b{color:var(--c-navy)}
+@media (max-width:767px){.g-steps,.g-feat{grid-template-columns:1fr}}
+
+/* 見積もり */
+.g-quote{width:100%;margin-top:24px;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
+.g-quote th,.g-quote td{padding:16px 14px;border-bottom:1px solid var(--c-line);text-align:left;vertical-align:top}
+.g-quote thead th{padding-top:10px;padding-bottom:10px;font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--c-text-mute);border-bottom:2px solid var(--c-navy)}
+.g-quote td.num,.g-quote th.num{text-align:right;white-space:nowrap}
+.g-quote tbody th{font-weight:700;color:var(--c-navy)}
+.g-quote tbody th small{display:block;margin-top:2px;font-size:13px;font-weight:400;color:var(--c-text-sub)}
+.g-quote tfoot th,.g-quote tfoot td{padding-top:20px;padding-bottom:20px;border-bottom:0;background:var(--c-navy);color:#fff;font-size:17px;font-weight:700}
+.g-quote tfoot td{font-size:24px;letter-spacing:.02em}
+.g-meta{margin-top:12px;font-size:13px;color:var(--c-text-mute);text-align:right}
+@media (max-width:640px){
+  .g-quote thead{display:none}
+  .g-quote,.g-quote tbody,.g-quote tr,.g-quote th,.g-quote td,.g-quote tfoot{display:block;width:auto}
+  .g-quote tbody tr{padding:14px 0;border-bottom:1px solid var(--c-line)}
+  .g-quote tbody th,.g-quote tbody td{padding:2px 0;border:0}
+  .g-quote tbody td.num{text-align:left}
+  .g-quote tbody td[data-l]::before{content:attr(data-l) "：";color:var(--c-text-mute);font-size:13px}
+  .g-quote tfoot tr{display:flex;justify-content:space-between;align-items:center;padding:16px;background:var(--c-navy)}
+  .g-quote tfoot th,.g-quote tfoot td{padding:0;background:none}
+  .g-quote tfoot .sp-hide{display:none}
+}
+.g-foot{padding:32px 0 48px;font-size:12px;color:var(--c-text-mute);text-align:center}
+</style>
+</head>
+<body>
+
+<header class="g-top">
+  <span class="logo-ph" role="img" aria-label="ロゴ（仮）">LOGO</span>
+  <p>Webサイト リニューアル｜デモのご案内</p>
+  <a class="btn" href="../">トップページを見る <span aria-hidden="true">→</span></a>
+</header>
+
+<main>
+<section class="page-head g-head">
+  <div class="wrap">
+    <p class="page-head__en">DEMO GUIDE</p>
+    <h1 class="page-head__ttl">デモのご案内</h1>
+    <p class="page-head__lead">多言語対応の実現イメージと費用、ブログ投稿の操作感をご確認いただくためのデモです。本番の実装は、内容をご確認いただいたうえで別途進めます。</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+
+    <article class="g-item" id="i18n">
+      <div><p class="g-no">01</p><h2>多言語対応</h2></div>
+      <div>
+        <p>トップページ右上の言語ボタンで、日本語と英語を切り替えられます。英語版のヒーローと主要な見出しには Helvetica を使い、デザインはそのまま維持しています。</p>
+        <p>選んだ言語は次にページを開いたときにも引き継がれます。英語版のURL（<code>?lang=en</code>）をそのままお送りいただくこともできます。</p>
+        <div class="g-langs">
+          <div><b>日本語</b><span class="ok">デモで確認できます</span></div>
+          <div><b>English</b><span class="ok">デモで確認できます</span></div>
+          <div><b>简体中文</b><span class="soon">本番で追加します</span></div>
+        </div>
+        <div class="g-btns">
+          <a class="btn btn--fill" href="../?lang=ja">日本語で見る <span aria-hidden="true">→</span></a>
+          <a class="btn btn--fill" href="../?lang=en">英語で見る <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="g-note">デモで英語化しているのはトップページとブログです。中国語（簡体字）のボタンは、本番での追加を想定して「準備中」として表示しています。</p>
+      </div>
+    </article>
+
+    <article class="g-item" id="blog">
+      <div><p class="g-no">02</p><h2>ブログ投稿</h2></div>
+      <div>
+        <p>WordPressより少ない手順で、記事の作成・編集・画像の挿入・公開ができる管理画面です。1つの画面の中で、書いてから公開するまでが完結します。</p>
+        <ol class="g-steps">
+          <li><b>新しい記事を書く</b><small>一覧の「＋ 新しい記事を書く」を押します。</small></li>
+          <li><b>タイトル・本文・画像を入れる</b><small>画像はボタンからでも、ドラッグ＆ドロップでも入れられます。</small></li>
+          <li><b>公開する</b><small>ボタン1つでトップページの「お知らせ・ブログ」に表示されます。</small></li>
+        </ol>
+        <ul class="g-feat">
+          <li><b>自動保存</b>：書いている途中の下書きは自動で保存</li>
+          <li><b>プレビュー</b>：公開前にサイトでの見え方を確認</li>
+          <li><b>見出し・太字・リスト・リンク</b>：言葉のボタンで装飾</li>
+          <li><b>言語の指定</b>：英語の記事は英語ページに表示</li>
+        </ul>
+        <div class="g-btns">
+          <a class="btn btn--fill" href="../admin/" target="_blank" rel="noopener">管理画面を開く <span aria-hidden="true">→</span></a>
+          <a class="btn" href="../blog/">ブログを見る <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="g-note">デモでは、記事はご覧になっているブラウザの中にだけ保存されます（ほかの方には表示されません）。管理画面の「記事を初期状態に戻す」でいつでも元に戻せます。本番での保存方法やログインの仕組みは、別途ご相談のうえ決めます。</p>
+      </div>
+    </article>
+
+    <article class="g-item" id="quote">
+      <div><p class="g-no">03</p><h2>多言語対応の<br>お見積り</h2></div>
+      <div>
+        <p>日本語・英語・中国語（簡体字）の3言語に対応する場合の費用です。</p>
+        <table class="g-quote">
+          <thead><tr><th scope="col">項目</th><th scope="col" class="num">単価</th><th scope="col" class="num">数量</th><th scope="col" class="num">金額</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">基盤構築<small>言語を切り替えるための仕組みづくり</small></th><td class="num" data-l="単価">9,000円</td><td class="num" data-l="数量">1式</td><td class="num" data-l="金額">9,000円</td></tr>
+            <tr><th scope="row">各言語の対応<small>日本語・英語・中国語（簡体字）</small></th><td class="num" data-l="単価">7,000円</td><td class="num" data-l="数量">3言語</td><td class="num" data-l="金額">21,000円</td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row">合計</th><td class="sp-hide"></td><td class="sp-hide"></td><td class="num">30,000円</td></tr></tfoot>
+        </table>
+        <p class="g-meta">2026年10月9日</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+</main>
+
+<p class="g-foot">デザイン確認用サンプル（社名・連絡先は仮の表記です）</p>
+</body>
+</html>

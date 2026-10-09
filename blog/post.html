@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>デザイン確認用サンプル｜記事</title>
+<meta name="description" content="デザイン確認用のサンプルページです。社名・連絡先は仮の表記です。">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=3">
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr__inner">
+    <a class="hdr__logo" href="../" aria-label="トップページ">
+      <span class="logo-ph" role="img" aria-label="ロゴ（仮）">LOGO</span>
+      <small data-en="Sample Holdings<br>Co., Ltd.">株式会社<br>〇〇〇〇ホールディングス</small>
+    </a>
+    <nav class="gnav" id="gnav" aria-label="グローバルナビゲーション">
+      <ul class="gnav__menu">
+        <li><a class="gnav__link" href="../#service">事業内容</a></li>
+        <li><a class="gnav__link" href="../#products">技術・製品</a></li>
+        <li><a class="gnav__link" href="../#record">実績・提携</a></li>
+        <li><a class="gnav__link" href="../#news">お知らせ</a></li>
+        <li><a class="gnav__link" href="../#about">会社情報</a></li>
+      </ul>
+      <div class="gnav__cta"><a href="../#contact">お問い合わせ</a></div>
+      <a class="gnav__tel" href="../#contact">電話する 00-0000-0000</a>
+    </nav>
+    <div class="lang" role="group" aria-label="言語の切り替え">
+        <button type="button" data-lang="ja" aria-pressed="true"><span class="lang__label-pc">日本語</span><span class="lang__label-sp">JA</span></button>
+        <button type="button" data-lang="en" aria-pressed="false"><span class="lang__label-pc">English</span><span class="lang__label-sp">EN</span></button>
+        <button type="button" data-lang="zh" aria-disabled="true" title="準備中"><span class="lang__label-pc">简体中文</span><span class="lang__label-sp">中文</span></button>
+      </div>
+
+    <button class="burger" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="gnav"><span class="burger__lines"><span></span><span></span><span></span></span></button>
+  </div>
+</header>
+
+<main>
+<section class="page-head">
+  <div class="wrap">
+    <p class="page-head__en">NEWS &amp; BLOG</p>
+    <p class="page-head__ttl">お知らせ・ブログ</p>
+    <p class="crumb"><a href="../">ホーム</a><span aria-hidden="true">/</span><a href="./">お知らせ・ブログ</a></p>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap">
+    <article class="article" data-article></article>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__top">
+      <div class="ftr__brand">
+        <p class="ftr__name" data-en="Sample Holdings Co., Ltd.<span>Design review sample</span>">株式会社〇〇〇〇ホールディングス<span>Sample Holdings Co., Ltd.</span></p>
+        <p class="ftr__addr" data-en="0-0-0 〇〇, 〇〇-ku, Osaka 000-0000, Japan<br>〇〇 Building 0F<br>TEL <a href=&quot;#contact&quot;>00-0000-0000</a><br>Corporate No. 0000000000000">〒000-0000<br>大阪府大阪市〇〇区〇〇 0丁目0番0号<br>〇〇ビル0階<br>TEL <a href="../#contact">00-0000-0000</a><br>法人番号 0000000000000</p>
+      </div>
+      <nav class="ftr__navs" aria-label="サイトマップ">
+        <div><p class="ftr__ttl">事業・製品</p><ul class="ftr__list"><li><a href="../#service">事業内容</a></li><li><a href="#">蓄電システム</a></li><li><a href="#">太陽光モジュール</a></li><li><a href="#">EMS</a></li><li><a href="#">発電所運営</a></li></ul></div>
+        <div><p class="ftr__ttl">会社情報</p><ul class="ftr__list"><li><a href="#">会社概要</a></li><li><a href="#">沿革</a></li><li><a href="../#record">実績・提携</a></li><li><a href="#">業界動向</a></li></ul></div>
+        <div><p class="ftr__ttl">お知らせ・ブログ</p><ul class="ftr__list"><li><a href="./">ブログ</a></li><li><a href="../#contact">電話でのお問い合わせ</a></li></ul></div>
+      </nav>
+    </div>
+  </div>
+  <div class="ftr__bar">
+    <div class="wrap ftr__bar-inner">
+      <span>© 2026 Sample Holdings Co., Ltd.（デザイン確認用サンプル・社名と連絡先は仮の表記です）</span>
+      <span><a href="#">プライバシーポリシー</a><a href="#">サイトのご利用について</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="demo-pill" href="../demo/"><b>DEMO</b>デモのご案内</a>
+
+<nav class="sp-bar" aria-label="お問い合わせ">
+  <a class="tel" href="../#contact">電話でお問い合わせ</a>
+</nav>
+
+<script src="../assets/blog-store.js?v=3"></script>
+<script src="../assets/i18n.js?v=3"></script>
+<script src="../assets/site.js?v=3"></script>
+<script>
+(() => {
+  const B = window.BlogStore;
+  const box = document.querySelector('[data-article]');
+  const id = new URLSearchParams(location.search).get('id');
+  const render = () => {
+    const p = id && B.get(id);
+    const lang = I18N.lang;
+    if (!p) {
+      box.innerHTML = `<p class="posts__empty">${I18N.t('記事が見つかりませんでした')}</p><a class="article__back" href="./">← ${I18N.t('記事一覧に戻る')}</a>`;
+      return;
+    }
+    document.title = p.title + '｜' + (lang === 'en' ? 'Design review sample' : 'デザイン確認用サンプル');
+    box.innerHTML = `
+      <p class="article__meta"><time>${B.fmtDate(p.date)}</time><span class="post-card__cat">${B.esc(B.catLabel(p.cat, lang))}</span>${p.status !== 'published' ? '<span class="post-card__cat">下書き（プレビュー）</span>' : ''}</p>
+      <h1 class="article__ttl" data-i18n-skip>${B.esc(p.title)}</h1>
+      ${p.image ? `<figure class="article__eye"><img src="${B.esc(B.url(p.image))}" alt=""></figure>` : ''}
+      <div class="prose" data-i18n-skip>${B.sanitize(p.content)}</div>
+      <a class="article__back" href="./">← ${I18N.t('記事一覧に戻る')}</a>`;
+  };
+  document.addEventListener('langchange', render);
+  render();
+})();
+</script>
+</body>
+</html>
