@@ -1,0 +1,199 @@
+/* =========================================================
+   TOP 折衷案（v3）
+   見た目は現行（../assets/site.css）をそのまま使い、
+   ここには v2 から持ってきた「動き」と「細部の仕掛け」だけを書く。
+   白基調に合わせて、v2 より光は弱く・時間は短くしている。
+   .v3js は JS が動く環境でだけ付く（動かない環境では最初から完成形で表示）
+   ========================================================= */
+:root{
+  --ff-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --glow:rgba(10,122,140,.35);
+}
+body{overflow-x:clip}
+
+/* ---------- 上端の進捗バー（HUD） ---------- */
+.progress{position:fixed;top:0;left:0;right:0;z-index:9996;height:2px;pointer-events:none}
+.progress span{display:block;height:100%;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,var(--c-brand),var(--c-brand-lt))}
+
+/* ---------- ヘッダー：表示中のセクションに下線が移る／CTAに色が流れ込む ---------- */
+.gnav__link i{display:none}
+.gnav__menu li>.gnav__link::after{content:"";position:absolute;bottom:0;left:22px;right:22px;height:2px;background:var(--c-brand);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--ease)}
+.gnav__menu li.is-current>.gnav__link::after,.gnav__menu li>.gnav__link:hover::after{transform:scaleX(1)}
+@media (max-width:1250px){.gnav__menu li>.gnav__link::after{left:14px;right:14px}}
+.gnav__cta a{position:relative;overflow:hidden;isolation:isolate}
+.gnav__cta a::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--c-navy);transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--ease)}
+.gnav__cta a:hover{background:var(--c-brand)}
+.gnav__cta a:hover::before{transform:scaleX(1)}
+.gnav__compare{display:none}
+
+/* スマホのメニュー：番号つきで順に現れる */
+@media (max-width:1080px){
+  .gnav__link i{display:inline;margin-right:16px;font:600 12px/1 var(--ff-mono);letter-spacing:.12em;color:var(--c-brand-lt);font-style:normal}
+  .gnav__menu li{opacity:0;transform:translateX(18px);transition:opacity .4s var(--ease),transform .4s var(--ease);transition-delay:calc(var(--i,0) * 60ms + 120ms)}
+  .gnav.is-open .gnav__menu li{opacity:1;transform:none}
+  .gnav__menu li>.gnav__link::after{display:none}
+  .gnav__compare{display:flex;justify-content:center;gap:4px;margin-top:28px;font-size:13px;font-weight:700}
+  .gnav__compare a,.gnav__compare span{display:flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid rgba(255,255,255,.25);color:#fff}
+  .gnav__compare span{background:#fff;color:var(--c-navy)}
+}
+
+/* ---------- ミニマップ（右側の位置表示） ---------- */
+.rail{position:fixed;right:22px;top:50%;z-index:8800;transform:translateY(-50%);opacity:0;pointer-events:none;transition:opacity .4s}
+.rail.is-show{opacity:1;pointer-events:auto}
+.rail ol{position:relative;display:grid;gap:2px;margin:0;padding:0;list-style:none}
+.rail ol::before{content:"";position:absolute;right:6px;top:12px;bottom:12px;width:1px;background:var(--c-line)}
+.rail a{position:relative;display:flex;align-items:center;justify-content:flex-end;min-height:26px;padding-right:22px}
+.rail a::after{content:"";position:absolute;right:2px;top:50%;width:9px;height:9px;margin-top:-4.5px;border:1px solid #9AA8B5;background:#fff;transform:rotate(45deg);transition:all .3s var(--ease)}
+.rail a span{padding:3px 8px;font:600 10px/1 var(--ff-mono);letter-spacing:.16em;color:var(--c-navy);background:#fff;border:1px solid var(--c-line);opacity:0;transform:translateX(6px);transition:opacity .25s,transform .25s var(--ease);pointer-events:none;white-space:nowrap}
+.rail a:hover span,.rail a:focus-visible span{opacity:1;transform:none}
+.rail a.is-done::after{border-color:var(--c-brand-lt);background:var(--c-brand-lt)}
+.rail a.is-here::after{border-color:var(--c-brand);background:var(--c-brand);box-shadow:0 0 0 4px rgba(10,122,140,.15)}
+@media (max-width:1180px){.rail{display:none}}
+
+/* ---------- ヒーロー：ネットワーク・一行ずつ出るコピー・ラベル ---------- */
+.hero__net{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none}
+.hero__glow{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(480px circle at var(--mx,50%) var(--my,45%),rgba(159,211,218,.12),transparent 70%);transition:opacity .4s}
+.hero__catch{z-index:2}
+.hero__dots,.hero__note{z-index:3}
+.hero__kicker{display:block;margin:0 auto 26px;width:fit-content;font:600 12px/1 var(--ff-mono);letter-spacing:.32em;color:var(--c-brand-lt);text-shadow:none}
+.hero__scroll{position:absolute;left:44px;bottom:140px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:12px;font:600 10px/1 var(--ff-mono);letter-spacing:.3em;color:rgba(255,255,255,.75);writing-mode:vertical-rl}
+.hero__scroll::after{content:"";width:1px;height:48px;background:linear-gradient(var(--c-brand-lt),transparent);background-size:1px 200%}
+@media (max-width:767px){.hero__kicker{font-size:9.5px;letter-spacing:.2em;margin-bottom:18px}.hero__scroll{display:none}}
+@media (prefers-reduced-motion:no-preference){
+  .v3js .hero__kicker{clip-path:inset(0 100% 0 0);animation:v3type 1.2s steps(31) forwards .2s}
+  .v3js .hero__line{clip-path:inset(0 100% 0 0);animation:v3wipe 1s var(--ease) forwards}
+  .v3js .hero__kicker+.hero__line{animation-delay:.45s}
+  .v3js .hero__line+.hero__line{animation-delay:.7s}
+  .v3js .hero__lead{animation:v3rise .9s var(--ease) both 1.1s}
+  .hero__scroll::after{animation:v3drip 1.8s linear infinite}
+}
+@keyframes v3type{to{clip-path:inset(0 0 0 0)}}
+@keyframes v3wipe{to{clip-path:inset(0 -2% 0 0)}}
+@keyframes v3rise{from{opacity:0;transform:translateY(12px)}}
+@keyframes v3drip{from{background-position:0 -48px}to{background-position:0 48px}}
+
+/* ---------- 四隅のブラケット（ホバー時の手応え。装飾はこの1種類） ---------- */
+.purpose__links a::after,.post-card::after,.work::after{content:"";position:absolute;inset:-1px;pointer-events:none;--b:var(--c-brand);--s:12px;
+  background:
+    linear-gradient(var(--b),var(--b)) top left/var(--s) 1.5px no-repeat,
+    linear-gradient(var(--b),var(--b)) top left/1.5px var(--s) no-repeat,
+    linear-gradient(var(--b),var(--b)) top right/var(--s) 1.5px no-repeat,
+    linear-gradient(var(--b),var(--b)) top right/1.5px var(--s) no-repeat,
+    linear-gradient(var(--b),var(--b)) bottom left/var(--s) 1.5px no-repeat,
+    linear-gradient(var(--b),var(--b)) bottom left/1.5px var(--s) no-repeat,
+    linear-gradient(var(--b),var(--b)) bottom right/var(--s) 1.5px no-repeat,
+    linear-gradient(var(--b),var(--b)) bottom right/1.5px var(--s) no-repeat;
+  opacity:0;transition:opacity .3s var(--ease),inset .3s var(--ease)}
+.purpose__links a:hover::after,.purpose__links a:focus-visible::after,.post-card:hover::after,.work:hover::after{opacity:1;inset:-7px}
+.post-card,.work{position:relative}
+
+/* ---------- 案内カード：持ち上がり、矢印が塗られる ---------- */
+.purpose__links a{transition:background .3s,transform .3s var(--ease)}
+.purpose__links a:hover{background:#F6F9FA;transform:translateY(-3px)}
+.purpose__links a:active{transform:translateY(-1px) scale(.99)}
+.purpose__links b{top:50%;right:14px;width:30px;height:30px;margin-top:-15px;border:1px solid var(--c-line);transition:background .3s,border-color .3s}
+.purpose__links b::after{content:"";position:absolute;left:9px;top:10px;width:8px;height:8px;border-top:1.5px solid var(--c-brand);border-right:1.5px solid var(--c-brand);transform:rotate(45deg);transition:border-color .3s}
+.purpose__links a:hover b{transform:none;background:var(--c-brand);border-color:var(--c-brand)}
+.purpose__links a:hover b::after{border-color:#fff}
+.purpose__links a:hover .purpose__num{color:var(--c-sun)}
+@media (max-width:767px){.purpose__links b{right:4px}}
+
+/* ---------- 会社の定義文：読み進めた分だけ濃くなる ---------- */
+.slg__main{word-break:auto-phrase;text-wrap:balance}
+.lit{color:rgba(11,31,51,.2);background-image:linear-gradient(90deg,var(--c-navy),var(--c-navy));background-repeat:no-repeat;background-size:var(--p,0%) 100%;-webkit-background-clip:text;background-clip:text;-webkit-box-decoration-break:slice;box-decoration-break:slice}
+html:not(.v3js) .lit{color:var(--c-navy);background:none}
+
+/* ---------- 見出し：英字が上から現れ、日本語の両脇の線が伸びる ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .v3js .hd8__en{clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--ease) .1s}
+  .v3js .hd8.is-in .hd8__en{clip-path:inset(-10% -2% -12% 0)}
+  .v3js .hd8__ja::before,.v3js .hd8__ja::after{transform:scaleX(0);transition:transform .7s var(--ease) .35s}
+  .v3js .hd8__ja::before{transform-origin:100% 50%}
+  .v3js .hd8__ja::after{transform-origin:0 50%}
+  .v3js .hd8.is-in .hd8__ja::before,.v3js .hd8.is-in .hd8__ja::after{transform:none}
+  .v3js .hd8__ja{opacity:0;transition:opacity .6s var(--ease)}
+  .v3js .hd8.is-in .hd8__ja{opacity:1}
+  /* 本文・カード：静かに浮かび上がる */
+  .v3js [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--d,0) * 90ms)}
+  .v3js [data-reveal].is-in{opacity:1;transform:none}
+}
+
+/* ---------- 事業内容：電気が流れて、3段階が順に点灯する ---------- */
+.svc__cont{position:relative}
+.svc__cont::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--c-navy),var(--c-brand),var(--c-sun));transform-origin:0 50%;transform:scaleX(0);transition:transform 1.8s var(--ease)}
+.svc__cont.is-on::after{transform:scaleX(1)}
+.svc__head{position:relative;overflow:hidden}
+.svc__head::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);pointer-events:none}
+@media (prefers-reduced-motion:no-preference){
+  .v3js .svc__cont:not(.is-on) .svc__head{background:#A9B5C1}
+  .v3js .svc__head{transition:background-color .6s var(--ease);transition-delay:calc(var(--i) * .55s + .35s)}
+  .v3js .svc__cont.is-on .svc__head::after{animation:v3sweep .9s var(--ease) both;animation-delay:calc(var(--i) * .55s + .45s)}
+  .v3js .svc__item+.svc__item::before{opacity:.25;transition:opacity .4s;transition-delay:calc(var(--i) * .55s + .2s)}
+  .v3js .svc__cont.is-on .svc__item+.svc__item::before{opacity:1}
+  .v3js .svc__item{transition:box-shadow .5s,border-color .5s;transition-delay:calc(var(--i) * .55s + .35s)}
+  .v3js .svc__cont.is-on .svc__item{border-color:#C7D3DC;box-shadow:0 10px 24px -14px rgba(11,31,51,.25)}
+}
+@keyframes v3sweep{to{transform:translateX(120%)}}
+
+/* ---------- 技術・製品：傾きと反射、型番ラベル、図に電気が流れる ---------- */
+.works{perspective:1100px}
+.work{transform:rotateX(var(--rx,0)) rotateY(var(--ry,0));transition:transform .5s var(--ease)}
+.work.is-tilting{transition:transform .08s linear}
+.work__media{position:relative}
+.work__media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.6) 48%,transparent 62%);background-size:250% 100%;background-position:var(--sx,120%) 0;mix-blend-mode:soft-light}
+.work__type{margin-top:16px;font:600 10.5px/1 var(--ff-mono);letter-spacing:.2em;color:var(--c-brand)}
+.work__type+.work__tags{margin-top:10px}
+.ef-flow{fill:none;stroke:var(--c-sun);stroke-width:2.4;stroke-dasharray:6 10}
+@media (prefers-reduced-motion:no-preference){.ef-flow{animation:v3flow 1.2s linear infinite}}
+@keyframes v3flow{to{stroke-dashoffset:-32}}
+
+/* ---------- 実績・提携：行が順に「解除」され、六角バッジが灯る ---------- */
+.rec__date em{display:flex;align-items:center;gap:5px}
+.hex{width:11px;height:12px;flex:none;overflow:visible}
+.hex path{fill:transparent;stroke:var(--c-brand);stroke-width:1.2;transition:fill .4s .3s,stroke .4s}
+.rec__list li.is-in .hex path,html:not(.v3js) .hex path{fill:var(--c-brand)}
+.rec__box--win .hex path{stroke:var(--c-sun)}
+.rec__box--win .rec__list li.is-in .hex path,html:not(.v3js) .rec__box--win .hex path{fill:var(--c-sun)}
+.rec__box--win .rec__date em{color:#8A5A0B;border-color:#F1D29C;background:#FFF6E8}
+@media (prefers-reduced-motion:no-preference){
+  .v3js .rec__list li{opacity:.25;transform:translateX(-8px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+  .v3js .rec__list li.is-in{opacity:1;transform:none}
+  .v3js .rec__list li.is-in .rec__date em{animation:v3pop .45s var(--ease) .15s both}
+}
+@keyframes v3pop{0%{transform:scale(.85)}60%{transform:scale(1.08)}100%{transform:none}}
+
+/* ---------- 会社情報・お問い合わせ：小さな手応え ---------- */
+.about__link{transition:padding .3s var(--ease),color .3s}
+.about__link:hover{padding-left:8px}
+.cta{isolation:isolate;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(159,211,218,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(159,211,218,.08) 1px,transparent 1px);background-size:48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse 65% 70% at 50% 50%,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse 65% 70% at 50% 50%,#000 25%,transparent 75%)}
+.cta__phone{transition:box-shadow .35s,transform .15s}
+.cta__phone:hover{box-shadow:0 0 0 4px rgba(159,211,218,.35),0 0 36px rgba(18,164,181,.35)}
+.cta__phone:active{transform:scale(.98)}
+
+/* ---------- ボタン全般：押した手応え ---------- */
+.btn{position:relative;overflow:hidden;isolation:isolate}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--c-brand);transform:scaleY(0);transform-origin:50% 100%;transition:transform .35s var(--ease)}
+.btn:hover{background:transparent}
+.btn:hover::before{transform:none}
+.btn:active,.card-link:active{transform:scale(.97)}
+
+/* ---------- 3案の切替（PC） ---------- */
+.vswitch{position:fixed;left:20px;bottom:20px;z-index:8600;display:flex;align-items:center;padding:4px;background:#fff;border:1px solid var(--c-line);box-shadow:0 8px 24px rgba(11,31,51,.14);font-size:12.5px;font-weight:700;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .35s,transform .35s var(--ease)}
+.vswitch.is-show{opacity:1;transform:none;pointer-events:auto}
+.vswitch a,.vswitch span{display:flex;align-items:center;min-height:36px;padding:0 14px;color:var(--c-text-sub)}
+.vswitch a:hover{color:var(--c-navy);background:var(--c-tint)}
+.vswitch span{background:var(--c-navy);color:#fff}
+@media (max-width:1080px){.vswitch{display:none}}
+
+/* ---------- 英語表示：追加した部品も Helvetica に ---------- */
+html[lang="en"] .slg__main .lit{font-family:var(--ff-en-head)}
+
+/* ---------- 動きを減らす設定 ---------- */
+@media (prefers-reduced-motion:reduce){
+  .lit{background-size:100% 100%}
+  .work{transform:none}
+}

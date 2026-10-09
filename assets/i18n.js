@@ -27,6 +27,12 @@
     '制御': 'Control',
     '現行デザインと比べる': 'Compare with current design',
 
+    /* 折衷案（v3）で追加 */
+    'デザイン確認用サンプル｜エネルギーインフラ開発会社 TOP（折衷案）': 'Design review sample | Energy infrastructure developer (hybrid design)',
+    'デザイン比較': 'Compare designs',
+    '現行': 'Current',
+    '折衷案': 'Hybrid',
+
     /* ヘッダー・共通 */
     '株式会社': 'Sample',
     '〇〇〇〇ホールディングス': 'Holdings Co., Ltd.',
