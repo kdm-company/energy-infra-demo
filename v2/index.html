@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>デザイン確認用サンプル｜エネルギーインフラ開発会社 TOP（新デザイン案）</title>
+<meta name="description" content="デザイン確認用のサンプルページです。社名・連絡先は仮の表記です。">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#06121F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/hero-1.jpg">
+<link rel="stylesheet" href="v2.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="hd">
+  <a class="hd__logo" href="./" aria-label="トップページ">
+    <span class="logo-ph" role="img" aria-label="ロゴ（仮）">LOGO</span>
+    <small data-en="Sample Holdings<br>Co., Ltd.">株式会社<br>〇〇〇〇ホールディングス</small>
+  </a>
+  <nav class="hd__nav" id="nav" aria-label="グローバルナビゲーション">
+    <ul>
+      <li style="--i:0"><a href="#service"><i>03</i>事業内容</a></li>
+      <li style="--i:1"><a href="#products"><i>04</i>技術・製品</a></li>
+      <li style="--i:2"><a href="#record"><i>05</i>実績・提携</a></li>
+      <li style="--i:3"><a href="#news"><i>06</i>お知らせ</a></li>
+      <li style="--i:4"><a href="#about"><i>07</i>会社情報</a></li>
+    </ul>
+    <a class="hd__cta" href="#contact">お問い合わせ</a>
+    <a class="hd__tel" href="#contact">電話する 00-0000-0000</a>
+    <a class="hd__compare" href="../"><b>v2</b>現行デザインと比べる</a>
+  </nav>
+  <div class="lang" role="group" aria-label="言語の切り替え">
+    <button type="button" data-lang="ja" aria-pressed="true"><span class="lang__pc">日本語</span><span class="lang__sp">JA</span></button>
+    <button type="button" data-lang="en" aria-pressed="false"><span class="lang__pc">English</span><span class="lang__sp">EN</span></button>
+    <button type="button" data-lang="zh" aria-disabled="true" title="準備中"><span class="lang__pc">简体中文</span><span class="lang__sp">中文</span></button>
+  </div>
+  <button class="hd__burger" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+</header>
+
+<!-- ミニマップ：いまページのどこにいるかを常に示す -->
+<nav class="rail" aria-label="ページ内の位置">
+  <ol>
+    <li><a href="#top" data-sec="top" aria-label="トップ"><span>TOP</span></a></li>
+    <li><a href="#role" data-sec="role" aria-label="私たちの役割"><span>ROLE</span></a></li>
+    <li><a href="#service" data-sec="service" aria-label="事業内容"><span>SERVICE</span></a></li>
+    <li><a href="#products" data-sec="products" aria-label="技術・製品"><span>PRODUCTS</span></a></li>
+    <li><a href="#record" data-sec="record" aria-label="実績・提携"><span>RECORD</span></a></li>
+    <li><a href="#news" data-sec="news" aria-label="お知らせ・ブログ"><span>NEWS</span></a></li>
+    <li><a href="#about" data-sec="about" aria-label="会社情報"><span>ABOUT</span></a></li>
+    <li><a href="#contact" data-sec="contact" aria-label="お問い合わせ"><span>CONTACT</span></a></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+<!-- 01 タイトル画面 -->
+<section class="hero" id="top" aria-label="メインビジュアル">
+  <div class="hero__bg" style="background-image:url('../assets/hero-1.jpg')"></div>
+  <canvas class="hero__grid" aria-hidden="true"></canvas>
+  <div class="hero__shade"></div>
+  <div class="hero__frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <p class="hero__hud hero__hud--tl" aria-hidden="true"><b></b>DISTRIBUTED ENERGY ASSETS</p>
+  <p class="hero__hud hero__hud--tr" aria-hidden="true">SOLAR / BESS / EMS</p>
+  <p class="hero__hud hero__hud--bl" aria-hidden="true">OSAKA, JAPAN</p>
+  <div class="hero__inner">
+    <p class="hero__kicker" aria-hidden="true">ENERGY INFRASTRUCTURE DEVELOPER</p>
+    <h1 class="hero__catch">
+      <span class="hero__line">エネルギーを、</span>
+      <span class="hero__line">設備から資産へ。</span>
+    </h1>
+    <p class="hero__lead"><span class="nw">太陽光・蓄電システム・EMSで、</span><span class="nw">分散型エネルギー資産を開発・運用する。</span></p>
+    <a class="btn-start" href="#role"><span>事業を見る</span><i aria-hidden="true"></i></a>
+  </div>
+  <p class="hero__note">画像はイメージです</p>
+  <div class="hero__scroll" aria-hidden="true">SCROLL</div>
+</section>
+
+<!-- クエスト選択 -->
+<section class="quest" aria-labelledby="quest-title">
+  <h2 class="quest__ttl" id="quest-title"><span class="mono" aria-hidden="true">SELECT</span>お探しの情報はこちら</h2>
+  <div class="quest__list">
+    <a class="quest__card frame" href="#service"><span class="quest__no" aria-hidden="true">01</span><strong>事業の内容を知りたい</strong><small>開発から資産化までの流れ</small><i class="quest__go" aria-hidden="true"></i></a>
+    <a class="quest__card frame" href="#products"><span class="quest__no" aria-hidden="true">02</span><strong>製品・仕様を確認したい</strong><small>蓄電システム・太陽光・EMS</small><i class="quest__go" aria-hidden="true"></i></a>
+    <a class="quest__card frame" href="#record"><span class="quest__no" aria-hidden="true">03</span><strong>実績・会社情報を見たい</strong><small>供給実績・提携先・会社概要</small><i class="quest__go" aria-hidden="true"></i></a>
+  </div>
+</section>
+
+<!-- 02 私たちの役割：読み進めたところから文字が点灯する -->
+<section class="role" id="role" aria-label="私たちの役割">
+  <div class="wrap">
+    <p class="sec-label" data-reveal><b>02</b>ROLE</p>
+    <p class="role__ja" data-reveal>私たちは、蓄電池設備そのものを販売する会社ではなく、</p>
+    <p class="role__main"><span class="lit" data-lit>電力系統に接続された分散型エネルギー資産を継続的に開発し、運用・収益化・資産化するインフラ開発会社です。</span></p>
+    <p class="role__sub" data-reveal>土地・設置場所の確保から系統接続、機器調達、EPC、EMS、アグリゲーターとの連携、市場運用、保守管理、資産売却までを一体的に組み立てることで、地域ごとに小規模なエネルギーノードを多数構築します。</p>
+  </div>
+</section>
+
+<!-- 03 事業内容：回路に電気が流れ、段階が順に点灯する -->
+<section class="sec sec--alt" id="service" aria-labelledby="service-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="sec-label" data-reveal><b>03</b>SERVICE</p><h2 id="service-title" data-reveal>事業内容</h2></div>
+      <p class="sec-lead" data-reveal>用地・系統・機器・運用・売却の条件を最初からつなげて検討し、3つの段階で事業を組み立てます。</p>
+    </div>
+    <div class="circuit" data-circuit>
+      <div class="circuit__line" aria-hidden="true"><span></span></div>
+      <ol class="circuit__nodes">
+        <li class="node frame" style="--i:0">
+          <span class="node__dot" aria-hidden="true"></span>
+          <p class="node__no" aria-hidden="true">PHASE 01</p>
+          <h3>開発</h3>
+          <p class="node__txt">用地と系統接続の条件を整え、機器を調達し、EPCで設備を形にします。</p>
+          <ul class="node__steps"><li><b>01</b>土地・設置場所の確保</li><li><b>02</b>系統接続</li><li><b>03</b>機器調達</li><li><b>04</b>EPC</li></ul>
+        </li>
+        <li class="node frame" style="--i:1">
+          <span class="node__dot" aria-hidden="true"></span>
+          <p class="node__no" aria-hidden="true">PHASE 02</p>
+          <h3>運用・収益化</h3>
+          <p class="node__txt">EMSで充放電を制御し、アグリゲーターと連携して電力市場で運用。保守管理まで継続して担います。</p>
+          <ul class="node__steps"><li><b>05</b>EMS</li><li><b>06</b>アグリゲーターとの連携</li><li><b>07</b>市場運用</li><li><b>08</b>保守管理</li></ul>
+        </li>
+        <li class="node frame" style="--i:2">
+          <span class="node__dot" aria-hidden="true"></span>
+          <p class="node__no" aria-hidden="true">PHASE 03</p>
+          <h3>資産化</h3>
+          <p class="node__txt">稼働した設備を、エネルギー資産として売却します。</p>
+          <ul class="node__steps"><li><b>09</b>資産売却</li></ul>
+          <p class="node__close">設備の導入で終わらせず、資産として売却するところまでを事業の範囲としています。</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 04 技術・製品：アイテム詳細カード -->
+<section class="sec" id="products" aria-labelledby="products-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="sec-label" data-reveal><b>04</b>PRODUCTS</p><h2 id="products-title" data-reveal>技術・製品</h2></div>
+      <p class="sec-lead" data-reveal>エネルギー資産を構成する、蓄電・発電・制御の3つの技術を取り扱っています。仕様の詳細は各製品ページでご覧いただけます。</p>
+    </div>
+    <div class="items">
+      <article class="item frame" data-tilt data-reveal style="--d:0">
+        <div class="item__stage"><img src="../assets/product-bess.jpg" width="1000" height="693" loading="lazy" alt="20フィート液冷蓄電コンテナシステムの外観"></div>
+        <div class="item__body">
+          <p class="item__type" aria-hidden="true">TYPE-01 / STORAGE</p>
+          <h3>蓄電システム（BESS）</h3>
+          <ul class="item__stats"><li><span>冷却</span><b>液冷式</b></li><li><span>容量</span><b>3.72MWh</b></li></ul>
+          <p class="item__txt">系統用・産業用の蓄電プロジェクトに向けた、20フィート液冷蓄電コンテナシステムとESS用液冷蓄電一体ユニット。2023年10月から自社製蓄電池の開発も進めています。</p>
+          <a class="item__link" href="#">製品を見る<i aria-hidden="true"></i></a>
+        </div>
+      </article>
+      <article class="item frame" data-tilt data-reveal style="--d:1">
+        <div class="item__stage"><img src="../assets/product-solar.jpg" width="1000" height="693" loading="lazy" alt="N型太陽光モジュールの表面と裏面"></div>
+        <div class="item__body">
+          <p class="item__type" aria-hidden="true">TYPE-02 / GENERATION</p>
+          <h3>太陽光モジュール</h3>
+          <ul class="item__stats"><li><span>セル</span><b>N型・P型</b></li><li><span>出力</span><b>545–670W</b></li></ul>
+          <p class="item__txt">海外メーカーとの包括的業務提携のもと、シングルガラス・ダブルガラスのモジュールを国内外へ供給しています。</p>
+          <a class="item__link" href="#">製品を見る<i aria-hidden="true"></i></a>
+        </div>
+      </article>
+      <article class="item frame" data-tilt data-reveal style="--d:2">
+        <div class="item__stage">
+          <svg class="ems-fig" viewBox="0 0 460 300" role="img" aria-labelledby="ems-fig-t">
+            <title id="ems-fig-t">蓄電池の状態をBMSが管理し、EMSが充放電を制御して系統につなぐ構成の概念図</title>
+            <g class="ef-rack"><rect x="22" y="104" width="30" height="78"/><path d="M22 124h30M22 143h30M22 162h30"/></g>
+            <g class="ef-rack"><rect x="58" y="104" width="30" height="78"/><path d="M58 124h30M58 143h30M58 162h30"/></g>
+            <g class="ef-rack"><rect x="94" y="104" width="30" height="78"/><path d="M94 124h30M94 143h30M94 162h30"/></g>
+            <path class="ef-wire" d="M124 143H164M240 143H274M350 143H372"/>
+            <path class="ef-flow" d="M124 143H164M240 143H274M350 143H372"/>
+            <rect class="ef-box" x="164" y="118" width="76" height="50"/>
+            <text class="ef-in" x="202" y="149">BMS</text>
+            <rect class="ef-box ef-box--ems" x="274" y="118" width="76" height="50"/>
+            <text class="ef-in ef-in--w" x="312" y="149">EMS</text>
+            <rect class="ef-box ef-box--grid" x="372" y="118" width="66" height="50"/>
+            <text class="ef-in ef-in--b" x="405" y="149" data-en="Grid">系統</text>
+            <text class="ef-lb" x="73" y="210" data-en="Battery">蓄電池</text>
+            <text class="ef-lb" x="202" y="196" data-en="Monitoring">状態管理</text>
+            <text class="ef-lb" x="312" y="196" data-en="Control">充放電制御</text>
+            <text class="ef-lb" x="405" y="196" data-en="Market">市場運用</text>
+            <text class="ef-cap" x="22" y="52" data-en="BMS / EMS structure (concept)">BMS・EMSの構成（概念図）</text>
+          </svg>
+        </div>
+        <div class="item__body">
+          <p class="item__type" aria-hidden="true">TYPE-03 / CONTROL</p>
+          <h3>BMS・EMS</h3>
+          <ul class="item__stats"><li><span>管理</span><b>状態管理</b></li><li><span>制御</span><b>充放電制御</b></li></ul>
+          <p class="item__txt">蓄電所や充放電需要のある事業者に適したBMS・EMS製品を提供。2024年3月から、国内向け産業用リチウム蓄電池の状態管理システムを共同開発しています。</p>
+          <a class="item__link" href="#">EMSについて見る<i aria-hidden="true"></i></a>
+        </div>
+      </article>
+    </div>
+    <div class="center"><a class="btn-line" href="#">製品一覧を見る <span aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+
+<!-- 05 実績・提携：スクロールで順に「解除」されるログ -->
+<section class="sec sec--alt" id="record" aria-labelledby="record-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="sec-label" data-reveal><b>05</b>RECORD</p><h2 id="record-title" data-reveal>実績・提携</h2></div>
+      <p class="sec-lead" data-reveal>電力会社グループの案件への供給実績と、国内外のメーカーとの技術・供給提携です。</p>
+    </div>
+    <div class="ach" data-ach>
+      <div class="ach__col ach__col--win">
+        <h3 class="ach__ttl"><span class="mono" aria-hidden="true">SUPPLY LOG</span>供給・採用の実績</h3>
+        <ol class="ach__list">
+          <li class="ach__row"><span class="ach__badge" aria-hidden="true"><svg viewBox="0 0 40 44"><path d="M20 2 38 12v20L20 42 2 32V12Z"/><path class="mark" d="m13 22 5 5 9-10"/></svg></span><span class="ach__date">2023.06</span><span class="ach__tag">採用</span><span class="ach__txt"><b>大手電力会社グループ A社 PPA事業</b><small>提携メーカー製太陽光モジュールが初採用</small></span></li>
+          <li class="ach__row"><span class="ach__badge" aria-hidden="true"><svg viewBox="0 0 40 44"><path d="M20 2 38 12v20L20 42 2 32V12Z"/><path class="mark" d="m13 22 5 5 9-10"/></svg></span><span class="ach__date">2023.11</span><span class="ach__tag">供給</span><span class="ach__txt"><b>大手電力会社グループ B社</b><small>太陽光モジュールの供給を開始</small></span></li>
+          <li class="ach__row"><span class="ach__badge" aria-hidden="true"><svg viewBox="0 0 40 44"><path d="M20 2 38 12v20L20 42 2 32V12Z"/><path class="mark" d="m13 22 5 5 9-10"/></svg></span><span class="ach__date">2023.11</span><span class="ach__tag">供給</span><span class="ach__txt"><b>電機商社 C社向け PPA案件</b><small>提携メーカー製太陽光モジュールの供給を開始</small></span></li>
+        </ol>
+      </div>
+      <div class="ach__col">
+        <h3 class="ach__ttl"><span class="mono" aria-hidden="true">ALLIANCE LOG</span>技術・供給の提携先</h3>
+        <ol class="ach__list">
+          <li class="ach__row"><span class="ach__badge" aria-hidden="true"><svg viewBox="0 0 40 44"><path d="M20 2 38 12v20L20 42 2 32V12Z"/><path class="mark" d="m13 22 5 5 9-10"/></svg></span><span class="ach__date">2022.03</span><span class="ach__tag">提携</span><span class="ach__txt"><b>太陽光モジュールメーカー D社</b><small>太陽光モジュールに関する包括的業務提携</small></span></li>
+          <li class="ach__row"><span class="ach__badge" aria-hidden="true"><svg viewBox="0 0 40 44"><path d="M20 2 38 12v20L20 42 2 32V12Z"/><path class="mark" d="m13 22 5 5 9-10"/></svg></span><span class="ach__date">2022.08</span><span class="ach__tag">協業</span><span class="ach__txt"><b>蓄電池メーカー E社</b><small>PCSを含む家庭用蓄電池システム分野での協業</small></span></li>
+          <li class="ach__row"><span class="ach__badge" aria-hidden="true"><svg viewBox="0 0 40 44"><path d="M20 2 38 12v20L20 42 2 32V12Z"/><path class="mark" d="m13 22 5 5 9-10"/></svg></span><span class="ach__date">2023.04</span><span class="ach__tag">販売提携</span><span class="ach__txt"><b>販売会社 F社</b><small>住宅メーカー向け家庭用蓄電ソリューションの販売提携</small></span></li>
+          <li class="ach__row"><span class="ach__badge" aria-hidden="true"><svg viewBox="0 0 40 44"><path d="M20 2 38 12v20L20 42 2 32V12Z"/><path class="mark" d="m13 22 5 5 9-10"/></svg></span><span class="ach__date">2023.10</span><span class="ach__tag">提携</span><span class="ach__txt"><b>蓄電池メーカー G社</b><small>日本国内向け産業用蓄電池に関する包括的業務提携</small></span></li>
+          <li class="ach__row"><span class="ach__badge" aria-hidden="true"><svg viewBox="0 0 40 44"><path d="M20 2 38 12v20L20 42 2 32V12Z"/><path class="mark" d="m13 22 5 5 9-10"/></svg></span><span class="ach__date">2024.03</span><span class="ach__tag">共同開発</span><span class="ach__txt"><b>エネルギー機器メーカー H社</b><small>国内向け産業用リチウム蓄電池状態管理システムの共同開発</small></span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 お知らせ・ブログ（管理画面デモと連動） -->
+<section class="sec" id="news" aria-labelledby="news-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="sec-label" data-reveal><b>06</b>NEWS</p><h2 id="news-title" data-reveal>お知らせ・ブログ</h2></div>
+      <p class="sec-lead" data-reveal>お知らせやコラムは、管理画面から更新できます。</p>
+    </div>
+    <div class="briefs" data-briefs></div>
+    <div class="center"><a class="btn-line" href="../blog/">一覧を見る <span aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+
+<!-- 07 会社情報：プロフィール画面 -->
+<section class="sec sec--alt" id="about" aria-labelledby="about-title">
+  <div class="wrap about__grid">
+    <div>
+      <p class="sec-label" data-reveal><b>07</b>ABOUT US</p>
+      <h2 class="about__ttl" id="about-title" data-reveal>大阪から、<br>地域ごとの<br>エネルギーノードを。</h2>
+    </div>
+    <div class="profile frame" data-reveal>
+      <p>2021年2月に設立し、2022年10月に再生可能エネルギー事業への一本化に伴って現社名へ変更しました。2023年8月に本社を大阪市内へ移転し、現在は大阪本社と海外子会社を拠点に事業を展開しています。</p>
+      <dl class="profile__stats">
+        <div><dt>設立</dt><dd>2021年2月</dd></div>
+        <div><dt>代表取締役</dt><dd>〇〇 〇〇</dd></div>
+        <div><dt>拠点</dt><dd>大阪本社／海外子会社</dd></div>
+      </dl>
+      <a class="profile__link" href="#">会社概要を見る<i aria-hidden="true"></i></a>
+      <a class="profile__link" href="#">沿革を見る<i aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- 08 お問い合わせ -->
+<section class="final" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="final__inner frame" data-reveal>
+      <p class="sec-label"><b>08</b>CONTACT</p>
+      <h2 id="contact-title">お問い合わせ</h2>
+      <p class="final__txt">系統用蓄電所、産業用蓄電、太陽光モジュール、BMS・EMS、発電所の運営、協業に関するご相談を承ります。設置場所・想定容量・時期など、分かる範囲でお知らせください。</p>
+      <a class="final__tel" href="#contact" aria-label="電話で問い合わせる 00-0000-0000"><span>お電話でのお問い合わせ</span><strong>00-0000-0000</strong><small>タップして電話をかける</small></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__top">
+      <div class="ft__brand">
+        <p class="ft__name" data-en="Sample Holdings Co., Ltd.<span>Design review sample</span>">株式会社〇〇〇〇ホールディングス<span>Sample Holdings Co., Ltd.</span></p>
+        <p class="ft__addr" data-en="0-0-0 〇〇, 〇〇-ku, Osaka 000-0000, Japan<br>〇〇 Building 0F<br>TEL 00-0000-0000<br>Corporate No. 0000000000000">〒000-0000<br>大阪府大阪市〇〇区〇〇 0丁目0番0号<br>〇〇ビル0階<br>TEL 00-0000-0000<br>法人番号 0000000000000</p>
+      </div>
+      <nav class="ft__navs" aria-label="サイトマップ">
+        <div><p class="ft__ttl">BUSINESS</p><ul><li><a href="#service">事業内容</a></li><li><a href="#">蓄電システム</a></li><li><a href="#">太陽光モジュール</a></li><li><a href="#">EMS</a></li><li><a href="#">発電所運営</a></li></ul></div>
+        <div><p class="ft__ttl">COMPANY</p><ul><li><a href="#">会社概要</a></li><li><a href="#">沿革</a></li><li><a href="#record">実績・提携</a></li><li><a href="#">業界動向</a></li></ul></div>
+        <div><p class="ft__ttl">NEWS</p><ul><li><a href="../blog/">ブログ</a></li><li><a href="#contact">電話でのお問い合わせ</a></li></ul></div>
+      </nav>
+    </div>
+    <div class="ft__bar">
+      <span>© 2026 Sample Holdings Co., Ltd.（デザイン確認用サンプル・社名と連絡先は仮の表記です）</span>
+      <span><a href="#">プライバシーポリシー</a><a href="#">サイトのご利用について</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="compare" href="../"><b>v2</b>現行デザインと比べる</a>
+<nav class="sp-bar" aria-label="お問い合わせ"><a href="#contact">電話でお問い合わせ</a></nav>
+
+<script src="../assets/blog-store.js?v=3"></script>
+<script src="../assets/i18n.js?v=4"></script>
+<script src="v2.js?v=1"></script>
+</body>
+</html>

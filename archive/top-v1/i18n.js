@@ -11,22 +11,6 @@
     'デザイン確認用サンプル｜お知らせ・ブログ': 'Design review sample | News & Blog',
     'デザイン確認用サンプル｜記事': 'Design review sample | Article',
 
-    /* 新デザイン案（v2）で追加 */
-    'デザイン確認用サンプル｜エネルギーインフラ開発会社 TOP（新デザイン案）': 'Design review sample | Energy infrastructure developer (new design)',
-    '本文へ移動': 'Skip to content',
-    'ページ内の位置': 'Sections',
-    'トップ': 'Top',
-    '事業を見る': 'Explore our business',
-    '電力系統に接続された分散型エネルギー資産を継続的に開発し、運用・収益化・資産化するインフラ開発会社です。':
-      'We are an infrastructure developer that continuously develops, operates, monetizes and capitalizes distributed energy assets connected to the power grid.',
-    '冷却': 'Cooling',
-    '容量': 'Capacity',
-    'セル': 'Cell type',
-    '出力': 'Output',
-    '管理': 'Monitoring',
-    '制御': 'Control',
-    '現行デザインと比べる': 'Compare with current design',
-
     /* ヘッダー・共通 */
     '株式会社': 'Sample',
     '〇〇〇〇ホールディングス': 'Holdings Co., Ltd.',
