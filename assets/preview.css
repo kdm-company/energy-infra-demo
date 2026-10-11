@@ -407,3 +407,8 @@ body{overflow-x:clip}
 .ftr__addr i{display:inline-block;font-style:normal}
 .ftr__addr i+i{margin-left:.4em}
 @media (max-width:767px){.ftr__bottom{padding-bottom:calc(96px + env(safe-area-inset-bottom))}}
+
+/* ---------- ロゴ（先方支給の透過データ。縦横比 660:128） ---------- */
+.hdr__logo img{width:176px;height:auto}
+@media (max-width:1080px){.hdr__logo img{width:140px;height:auto}}
+.ftr__logo img{width:140px}
