@@ -412,3 +412,108 @@ body{overflow-x:clip}
 .hdr__logo img{width:176px;height:auto}
 @media (max-width:1080px){.hdr__logo img{width:140px;height:auto}}
 .ftr__logo img{width:140px}
+
+/* ======================================================================
+   2026-10-11 仕上げ（選択5箇所・連絡先・スマホ）
+   ====================================================================== */
+/* 1. ヒーロー「画像はイメージです」：重なるカードから離す（ドットと高さを揃える） */
+.hero__dots{bottom:168px}
+.hero__note{bottom:164px}
+@media (max-width:767px){.hero__dots{bottom:120px}.hero__note{bottom:116px}}
+
+/* 2. お探しの情報はこちら：矢印ぶんの余白を確保し、見出しを文節で折り返す */
+.purpose__links a{padding:10px 72px 10px 28px}
+.purpose__links strong{word-break:auto-phrase;text-wrap:balance}
+.purpose__links small{word-break:auto-phrase}
+.purpose__links b{right:20px}
+@media (max-width:1080px){.purpose__links a{padding:10px 60px 10px 20px}.purpose__links b{right:14px}}
+@media (max-width:767px){.purpose__links a{padding:16px 56px 16px 4px}.purpose__links b{right:4px}}
+
+/* 3. 事業内容カードの手順：縦の罫線リストを2列のコンパクトな表に */
+.svc__steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--c-line-weak);border-left:1px solid var(--c-line-weak)}
+.svc__steps li{display:flex;align-items:center;min-height:52px;padding:8px 12px;border-right:1px solid var(--c-line-weak);font-size:13.5px;line-height:1.5;word-break:auto-phrase}
+
+/* 4. ABOUT US：640px以上は常に文章と写真を横並び。写真は文章の高さに合わせる */
+@media (min-width:640px){
+  .about2__in{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,80px);align-items:stretch}
+  .about2__visual{aspect-ratio:auto;min-height:100%}
+  .about2__visual img{position:relative;height:100%}
+}
+@media (min-width:960px){.about2__in{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:639px){
+  .about2__visual{order:-1;aspect-ratio:16/9}
+  .about2__facts div{padding:12px 0;grid-template-columns:6.5em 1fr}
+}
+
+/* 5. 製品詳細：本文を全幅に。特長は番号付きの2列、適用シーンは帯で横並び */
+.pd__body{max-width:none}
+.points{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:0 32px;border-top:1px solid var(--c-navy)}
+.points li{display:flex;gap:14px;padding:16px 0 16px;border-bottom:1px solid var(--c-line);font-size:15px;line-height:1.8;color:var(--c-navy)}
+.points li::before{content:none}
+.points li span{flex:none;padding-top:.2em;font:700 12px/1.6 var(--ff-en);letter-spacing:.1em;color:var(--c-brand)}
+.use-band{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:28px;padding:22px 28px;background:var(--g-tint);border-left:3px solid var(--c-brand)}
+.use-band__label{flex:none;font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--c-brand)}
+.use-band__list{display:flex;flex-wrap:wrap;gap:8px 0;margin:0;padding:0;list-style:none}
+.use-band__list li{padding:0 18px;font-size:16px;font-weight:700;color:var(--c-navy);border-left:1px solid var(--c-line)}
+.use-band__list li:first-child{padding-left:0;border-left:0}
+.use-band small{font-size:13px;color:var(--c-text-mute)}
+.feat{grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
+@media (max-width:767px){.use-band{padding:18px 18px;gap:10px 20px}.use-band__list li{padding:0 12px;font-size:15px}}
+
+/* 連絡先：メール（未確定のあいだは差し込み口として表示） */
+.pending{display:inline-block;padding:1px 10px;border:1px dashed currentColor;font-size:.86em;font-weight:500;letter-spacing:.04em;opacity:.75}
+.cta__grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;max-width:820px}
+.cta__mail strong{font-size:clamp(17px,2vw,22px);letter-spacing:.02em;word-break:break-all}
+.cta__mail strong.pending{font-size:14px;color:var(--c-text-sub)}
+div.cta__mail{cursor:default}
+div.cta__mail:hover{box-shadow:none}
+.cinfo__label--mail{margin-top:26px}
+.cinfo__mail{margin-top:8px;font-size:18px;font-weight:700;color:#fff}
+.cinfo__mail a{color:#fff}
+.svc__steps li:last-child:nth-child(odd){grid-column:1/-1}
+.points{grid-template-columns:1fr}
+@media (min-width:768px){.points{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- スマホ・タブレット：縦に伸ばさず横幅を使う ---------- */
+@media (max-width:900px){
+  /* 事業内容：フェーズ見出しを1行の帯に、手順表を詰める */
+  .svc__cont{padding:16px 12px;gap:24px}
+  .svc__head{display:flex;align-items:center;gap:14px;padding:13px 18px;text-align:left}
+  .svc__no::after{display:none}
+  .svc__ttl{font-size:18px}
+  .svc__body{padding:16px 16px 18px;text-align:left}
+  .svc__steps{margin-top:14px}
+  .svc__steps li{min-height:44px;padding:8px 10px;font-size:13px}
+  /* 技術・製品：写真と文章を横並び */
+  .works{gap:28px}
+  .work{display:grid;grid-template-columns:clamp(112px,32vw,220px) minmax(0,1fr);column-gap:16px;align-items:start}
+  .work__media{grid-row:1/3}
+  .work__media img,.work__media--fig{height:auto;max-height:none;aspect-ratio:1000/693;padding:6px}
+  .work__ttl{margin:2px 0 4px;font-size:16px}
+  .work__spec{margin:0;font-size:12px}
+  .work__txt{grid-column:1/-1;margin-top:12px;font-size:13.5px}
+  .work .card-link{grid-column:1/-1;justify-self:start;margin-top:8px}
+  /* 実績・提携：日付と内容を横並び */
+  .rec__box{padding:20px 18px 6px}
+  .rec__ttl{font-size:17px}
+  .rec__list li{grid-template-columns:62px minmax(0,1fr);gap:12px;padding:12px 0}
+  .rec__date{font-size:12px}
+  .rec__txt b{font-size:14.5px}
+  .rec__txt small{font-size:12.5px;line-height:1.7}
+  /* お知らせ：小さな画像＋日付・見出しの一覧 */
+  .posts{gap:0;border-top:1px solid var(--c-line)}
+  .post-card{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;align-items:center;padding:14px 0;border:0;border-bottom:1px solid var(--c-line);background:none}
+  .post-card:hover{box-shadow:none;transform:none}
+  .post-card::after{display:none}
+  .post-card__img{aspect-ratio:1/1}
+  .post-card__noimg{gap:4px;font-size:8px;letter-spacing:.2em}
+  .post-card__noimg b{font-size:11px}
+  .post-card__body{padding:0;gap:6px}
+  .post-card__meta{font-size:12px;gap:8px}
+  .post-card__cat{padding:1px 6px;font-size:10.5px}
+  .post-card__ttl{font-size:14.5px;line-height:1.6}
+}
+/* 最終行に1文字だけ残る改行を防ぐ */
+main p,main li,main dd,main small,main td{text-wrap:pretty}
+main h1,main h2,main h3,main strong,main b{text-wrap:balance}
+@media (max-width:767px){.hd8-block--right .hd8__lead{text-align:left}}
