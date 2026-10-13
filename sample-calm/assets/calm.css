@@ -1,0 +1,159 @@
+/* =========================================================
+   デザインサンプル「落ち着いた方向」（v2.css の後に読み込む上書き）
+   方向性：静かな設計図 … 明るい地・細い線・広い余白・低いコントラスト
+   ・紺の帯は Node Architecture とフッターだけ
+   ・日本語の大見出しは明朝（Noto Serif JP 500）、英語の大見出しは細め
+   ・巨大な番号はやめ、小さなラベル「01 ―」にする
+   ========================================================= */
+:root{
+  --paper:#F6F6F2;
+  --text:#1F2A33;--sub:#5E6A72;--mute:#87939B;
+  --line:#DADDD8;--line-weak:#E8EAE5;
+  --heat:#C08A4E;
+  --ff-serif:"Noto Serif JP","Hiragino Mincho ProN",serif;
+  --sec:88px;
+}
+@media (min-width:768px){:root{--sec:120px}}
+@media (min-width:1081px){:root{--sec:160px}}
+body{line-height:2;color:var(--text)}
+
+/* サンプルの表示帯 */
+.sample-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 16px;padding:7px 16px;background:#E9EAE4;font-size:12px;color:var(--sub)}
+.sample-bar a{color:var(--navy);font-weight:700;border-bottom:1px solid currentColor}
+
+/* ---------- 見出し ---------- */
+.sh__ttl,.tech__ttl,.biz__ttl,.ib__ttl,.recruit__ttl,.consult__ttl,.page-head__ttl,.pd2__name,.art2__ttl,.hero2__ja,.dmis__nt{font-family:var(--ff-serif);font-weight:500;letter-spacing:.06em}
+.sh__ttl{font-size:clamp(22px,3vw,36px);line-height:1.6}
+.sh__ttl--en{font-family:var(--ff-en);font-weight:300;font-size:clamp(28px,3.6vw,44px);line-height:1.2;letter-spacing:0}
+.sh__lead,.tech__txt{max-width:36em}
+.sh__tag{padding:2px 8px;font-size:10.5px;border-color:rgba(10,122,140,.55)}
+.tech__ttl,.biz__ttl{font-size:clamp(22px,2.8vw,32px)}
+.ib__ttl{font-size:clamp(21px,2.6vw,30px)}
+.body2{max-width:42em}
+
+/* 番号：巨大な数字をやめて小さなラベルに */
+.tech__no,.biz__no,.ib__no,.kind__no,.pillar__no{display:inline-flex;align-items:center;gap:12px;font:500 13px/1 var(--ff-en)!important;letter-spacing:.16em;color:var(--teal)}
+.tech__no::after,.biz__no::after,.ib__no::after,.kind__no::after,.pillar__no::after{content:"";width:32px;height:1px;background:currentColor;opacity:.7}
+.tech--navy .tech__no{color:var(--teal)}
+.merits span{font:500 13px/1 var(--ff-en)!important;letter-spacing:.16em}
+
+/* ---------- ボタン ---------- */
+.btn2--solid{background:var(--navy)}
+.btn2--solid:hover{background:#1D4560}
+
+/* ---------- TOP：ヒーロー（明るい地、文章＋大きなCG枠） ---------- */
+.hero2--calm{display:block;min-height:0;padding:48px 0 72px;background:#fff;color:var(--text);overflow:visible}
+.hero2--calm .hero2__in{display:grid;gap:40px}
+.hero2--calm .hero2__en{max-width:15em;font-weight:300;font-size:clamp(27px,3.9vw,48px);line-height:1.22;letter-spacing:-.005em;color:var(--navy)}
+.hero2--calm .hero2__ja{margin-top:24px;font-size:clamp(21px,2.5vw,30px);line-height:1.7;color:var(--navy)}
+.hero2--calm .hero2__sub{margin-top:16px;max-width:30em;font-size:15px;line-height:2;color:var(--sub)}
+.hero2--calm .hero2__btns{align-items:center;gap:20px 28px;margin-top:32px}
+.hero2--calm .hero2__btns .btn2{flex:0 0 auto}
+@media (min-width:1081px){
+  .hero2--calm{padding:88px 0 112px}
+  .hero2--calm .hero2__in{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:64px;align-items:center}
+}
+
+/* ---------- 写真・CGの枠：明るいグレー＋ごく薄い線 ---------- */
+.ph--light{background:#ECEEEA;color:var(--sub)}
+.ph--light .ph__grid{background-image:linear-gradient(rgba(31,42,51,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(31,42,51,.05) 1px,transparent 1px);background-size:32px 32px}
+.ph--light .ph__tag{border-color:rgba(31,42,51,.22);color:var(--mute)}
+.ph--light figcaption{color:var(--sub)}
+
+/* ---------- TOP：Mission ---------- */
+.dmis__issue{border-color:var(--line)}
+.dmis__issue p{font-weight:500}
+.dmis__node{background:#fff;border:1px solid var(--navy);color:var(--navy)}
+.dmis__ring{display:none}
+.dmis__nk{color:var(--teal)}
+.dmis__cyc li{border-color:var(--line);color:var(--sub)}
+.dmis__cyc li:last-child{border-color:rgba(192,138,78,.55);color:var(--heat)}
+.dmis__lines path{stroke-width:1}
+
+/* ---------- TOP：3 Core Pillars ---------- */
+.pillar__en{font-weight:300;font-size:28px}
+.pillar__txt{font-weight:400}
+@media (hover:hover) and (pointer:fine) and (min-width:768px){
+  .pillar__spec{background:rgba(255,255,255,.95)}
+  .pillar__spec li{color:var(--text)}
+  .pillar__spec li::before{background:var(--teal)}
+  .pillar__speck{color:var(--teal)}
+}
+
+/* ---------- TOP：Node Architecture（紺の帯を残す唯一の本文セクション。線を細く、塗らない） ---------- */
+.sec2--navy{background:#12263A}
+.dnode__col{border-color:rgba(159,211,218,.28)}
+.dnode__col--core{background:transparent;border-color:rgba(159,211,218,.6)}
+.dnode__col>ul:not(.dnode__mods) li{border-color:rgba(255,255,255,.2);font-weight:400}
+.dnode__mods li{background:transparent;border-color:rgba(159,211,218,.3)}
+.dnode__mods b{font-weight:500}
+
+/* ---------- TOP：Impact・用地募集 ---------- */
+.impact__msg{font-weight:500}
+.recruit{background:var(--paper);color:var(--text);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.recruit::before{display:none}
+.recruit .sh__tag{border-color:rgba(10,122,140,.55);color:var(--teal)}
+.recruit__ttl{color:var(--navy)}
+.recruit__req div{border-top-color:var(--line)}
+.recruit__req dt{color:var(--teal)}
+
+/* ---------- 下層：見出し帯（粒は残し、光を3割弱める） ---------- */
+.ph-glow{opacity:.7}
+.page-head__ttl{font-size:clamp(24px,3.6vw,36px)}
+
+/* ---------- Platform ---------- */
+.tech--navy{background:var(--paper);color:var(--text)}
+.tech--navy .tech__ttl{color:var(--navy)}
+.tech--navy .tech__txt{color:var(--sub)}
+.dems__in li,.dems__out li{border-color:var(--line);color:var(--text);font-weight:400}
+.dems__out li{background:#fff;border-color:var(--teal);font-weight:500}
+.dems__core{border-color:var(--navy);color:var(--navy);background:#fff}
+.dems__core::before,.dems__core::after{background:var(--teal)}
+.dems__k{color:var(--teal)}
+.dems__core b{font-weight:300}
+.dconv,.dcool,.dheat{background:#fff;border-color:var(--line)}
+.dconv__racks rect,.dconv__bess rect{fill:none!important}
+.dconv__list li{border-color:var(--line);font-weight:500}
+.dcool__box{border-color:var(--line)}
+.dcool__box--main{border-color:var(--navy);box-shadow:none}
+.dcool__loop{background:transparent}
+.ems2{border-color:var(--line)}
+
+/* ---------- Businesses・製品 ---------- */
+.dheat__src{box-shadow:none;border-color:rgba(192,138,78,.55)}
+.dheat__to li,.app2__items div{border-color:var(--line);font-weight:500}
+.app2__items div{background:transparent}
+.feat2__item{background:transparent;border-color:var(--line)}
+.use2{background:transparent;border:1px solid var(--line);border-left:1px solid var(--teal)}
+.prod__name{font-weight:500}
+
+/* ---------- For Partners ---------- */
+.merits li{background:transparent;border-color:var(--line)}
+.merits b{font-weight:500}
+.dflow li{border-color:var(--line)}
+.dflow b{font-weight:500}
+.consult{background:var(--paper);color:var(--text);border-top:1px solid var(--line)}
+.consult__ttl{color:var(--navy)}
+.consult__txt{color:var(--sub)}
+
+/* ---------- Company ---------- */
+.msg{background:transparent;border:1px solid var(--line);border-left:1px solid var(--teal)}
+.mvv2>div{border-color:var(--line)}
+.mvv2__t{font-weight:500}
+.dcas{border-color:var(--line)}
+.dcas__a{background:transparent}
+.dcas__b{box-shadow:none;border-color:rgba(192,138,78,.55)}
+.research{background:transparent;border:1px solid var(--line)}
+.research__lead{font-weight:500}
+
+/* ---------- Contact ---------- */
+.cbase>div{background:var(--paper);color:var(--navy);border:1px solid var(--line)}
+.cbase__k{color:var(--teal)}
+.cbase__v{color:var(--navy);font-weight:300}
+.kind{border-color:var(--line)}
+.kind__ttl{font-weight:500}
+.fields__list li{background:transparent;border:1px solid var(--line);font-weight:500}
+
+/* ---------- 動き：さらに控えめに ---------- */
+.rv{transform:translateY(8px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+@media (max-width:1080px){.sample-bar{justify-content:flex-start;min-height:64px;padding:8px 76px 8px 16px}}
