@@ -1,0 +1,243 @@
+/* =========================================================
+   デザインサンプル「落ち着いた方向」（TOP のみ）
+   kdm-preview-2610 の base.css・preview.css に重ねる上書き
+   ・構図はそのまま。色・文字・余白・動きの調子だけを落ち着かせる
+   ・図解（対比図・構成図）は今の TOP の形のまま、細線で主張しすぎない扱いに
+   ========================================================= */
+:root{
+  --c-text:#1F2A33;--c-text-sub:#5E6A72;--c-text-mute:#87939B;
+  --c-line:#DADDD8;--c-line-weak:#E8EAE5;
+  --g-tint:linear-gradient(180deg,#F7F7F3 0%,#F1F2EE 100%);
+  --sec-y:136px;
+  /* 図解（今の TOP から移した部分）で使う名前 */
+  --navy:#0B1F33;--teal:#0A7A8C;--teal-lt:#9FD3DA;--heat:#C08A4E;
+  --line:#DADDD8;--line-weak:#E8EAE5;--text:#1F2A33;--sub:#5E6A72;--mute:#87939B;
+  --ff-serif:"Noto Serif JP","Hiragino Mincho ProN",serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+@media (max-width:767px){:root{--sec-y:88px}}
+body{line-height:2;color:var(--c-text)}
+main p,main li,main dd{text-wrap:pretty}
+main h1,main h2,main h3,main b,main strong{text-wrap:balance;word-break:auto-phrase}
+main li,main dt{word-break:auto-phrase}
+
+/* サンプルの表示帯 */
+.is-sample .hdr{top:34px}
+.sample-bar{position:fixed;top:0;left:0;right:0;z-index:9991;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2px 16px;height:34px;padding:0 16px;background:#E9EAE4;font-size:12px;line-height:1.4;color:var(--sub)}
+.sample-bar p{margin:0}
+.sample-bar a{color:var(--navy);font-weight:700;border-bottom:1px solid currentColor}
+.is-sample main{padding-top:34px}
+@media (max-width:1080px){
+  .sample-bar{justify-content:flex-start;height:44px;padding:0 16px;font-size:11.5px}
+  .is-sample .hdr{top:44px}
+  .is-sample main{padding-top:44px}
+  .is-sample .burger{top:44px}
+  .is-sample.is-menu-open .burger{top:0}
+}
+
+/* ---------- 差し込み口・写真枠 ---------- */
+.pending{display:inline-block;padding:1px 10px;border:1px dashed currentColor;font-size:.86em;font-weight:500;letter-spacing:.03em;opacity:.72;line-height:1.7}
+.pending-date{letter-spacing:.1em;opacity:.55}
+.photo,.ph{position:relative;margin:0;aspect-ratio:var(--r,16/9);overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.ph--light{background:#ECEEEA;color:var(--sub)}
+.ph__grid{position:absolute;inset:0;background-image:linear-gradient(rgba(31,42,51,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(31,42,51,.05) 1px,transparent 1px);background-size:32px 32px}
+.ph__tag{position:absolute;left:14px;top:14px;padding:2px 8px;border:1px solid rgba(31,42,51,.22);font:600 10px/1.6 var(--ff-en);letter-spacing:.14em;color:var(--mute)}
+.ph figcaption{position:absolute;left:14px;right:14px;bottom:12px;font-size:12px;line-height:1.6;color:var(--sub)}
+.heat{color:var(--heat)}
+
+/* ---------- ボタン ---------- */
+.sbtn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:14px 26px;font-size:14.5px;font-weight:700;letter-spacing:.08em;line-height:1.4;border:1px solid transparent;transition:background .3s,color .3s,border-color .3s}
+.sbtn::after{content:"";width:18px;height:1px;background:currentColor;transition:width .3s var(--ease)}
+.sbtn:hover::after{width:28px}
+.sbtn--solid{background:var(--navy);color:#fff}
+.sbtn--solid:hover{background:#1D4560}
+.sbtn--ghost{border-color:rgba(255,255,255,.65);color:#fff}
+.sbtn--ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.sbtn--light{background:#fff;color:var(--navy)}
+.sbtn--light:hover{background:#EEF1F2}
+.more-r{margin-top:32px;text-align:right}
+
+/* ---------- ヘッダー（英語のメニュー名に合わせて字間を詰める） ---------- */
+.gnav__link{font-family:var(--ff-en);font-weight:500;letter-spacing:.03em}
+.gnav__cta a{font-family:var(--ff-en);font-weight:500;letter-spacing:.06em;background:var(--navy)}
+.gnav__cta a::before{background:var(--teal)}
+.gnav__cta a:hover{background:var(--navy)}
+@media (min-width:1081px){.gnav__menu{font-size:14.5px}.gnav__link{padding:0 17px}}
+.lang button{font-family:var(--ff-en)}
+
+/* ---------- 01 ヒーロー：写真1枚、中央に明朝のコピー ---------- */
+.hero--calm{height:780px}
+.hero--calm .hero__ph{transform:none!important;transition:none!important}
+.hero--calm .hero__ph::before{background:linear-gradient(180deg,rgba(8,24,39,.5) 0%,rgba(8,24,39,.3) 40%,rgba(8,24,39,.38) 70%,rgba(8,24,39,.62) 100%)}
+.hero--calm .hero__catch{position:absolute;left:0;right:0;top:50%;transform:translateY(-58%);padding:0 24px;font-family:var(--ff-base);letter-spacing:0;text-shadow:0 1px 16px rgba(6,10,16,.35);animation:none}
+.hero__en{margin:0 auto;max-width:28em;font:300 clamp(15px,1.5vw,19px)/1.6 var(--ff-en);letter-spacing:.06em;color:rgba(255,255,255,.88)}
+.hero__ja{margin:18px 0 0;font-family:var(--ff-serif);font-size:clamp(27px,3.5vw,44px);font-weight:500;line-height:1.6;letter-spacing:.14em;color:#fff}
+.hero__ja .hero__line{display:block}
+.hero--calm .hero__lead{margin:22px auto 0;max-width:34em;font-size:15px;font-weight:400;line-height:2;letter-spacing:.06em;color:rgba(255,255,255,.88)}
+.hero__btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px}
+.hero--calm .hero__note{right:24px;left:auto;bottom:128px;max-width:420px;text-align:right;font-size:10.5px;line-height:1.7;color:rgba(255,255,255,.62)}
+.hero--calm .hero__note span{display:block}
+.hero--calm .hero__note b{margin-right:8px;padding:0 6px;border:1px solid rgba(255,255,255,.4);font:600 9px/1.6 var(--ff-en);letter-spacing:.14em}
+@media (max-width:767px){
+  .hero--calm{height:auto;min-height:calc(100svh - 108px);padding:96px 0 150px}
+  .hero--calm .hero__catch{position:relative;top:auto;transform:none;padding:0 20px;text-align:left}
+  .hero__en{margin:0;font-size:15px}
+  .hero__ja{font-size:26px;letter-spacing:.1em}
+  .hero--calm .hero__lead{margin-left:0;font-size:14px}
+  .hero__btns{justify-content:flex-start}
+  .hero__btns .sbtn{flex:1 1 100%}
+  .hero--calm .hero__note{left:20px;right:20px;bottom:84px;max-width:none;text-align:left}
+}
+
+/* ---------- 02 重なる白いカード：Latest News ---------- */
+.purpose--news{padding:28px 44px 20px;border-top:2px solid var(--teal);box-shadow:0 12px 36px rgba(11,31,51,.07)}
+.pnews__head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px;padding-bottom:12px;border-bottom:1px solid var(--navy)}
+.purpose--news h2{margin:0;text-align:left;font:300 22px/1.3 var(--ff-en);letter-spacing:.02em;color:var(--navy)}
+.pnews li+li{border-top:1px solid var(--c-line-weak)}
+.pnews a{display:grid;gap:4px;padding:14px 0}
+.pnews__meta{display:flex;align-items:center;gap:12px;font:500 12.5px/1.6 var(--ff-en);color:var(--mute)}
+.pnews__cat{padding:0 8px;border:1px solid rgba(10,122,140,.5);font-family:var(--ff-base);font-size:11px;font-weight:700;color:var(--teal)}
+.pnews__ttl{font-size:14.5px;font-weight:500;line-height:1.7;color:var(--navy);transition:color .3s}
+.pnews a:hover .pnews__ttl{color:var(--teal)}
+@media (min-width:900px){.pnews a{grid-template-columns:230px minmax(0,1fr);align-items:center;gap:20px}}
+@media (max-width:767px){.purpose--news{padding:20px 18px 8px}}
+
+/* ---------- 03 役割の帯：Mission ---------- */
+.slg--mission{padding-bottom:var(--sec-y)}
+.slg--mission::after{display:none}
+.slg__tag{display:inline-block;margin:0 0 18px;padding:2px 9px;border:1px solid rgba(10,122,140,.55);font:600 10.5px/1.6 var(--ff-en);letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.slg__main{font-weight:500;font-size:clamp(22px,2.4vw,30px);letter-spacing:.08em}
+.dmis{max-width:880px;margin:56px auto 0;text-align:left}
+.dmis__issues{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:10px}
+.dmis__issue{padding:16px 14px;background:#fff;border:1px solid var(--line)}
+.dmis__k{display:block;font:600 10.5px/1.5 var(--ff-en);letter-spacing:.12em;color:var(--teal)}
+.dmis__issue p{margin:6px 0 0;font-size:14px;font-weight:500;line-height:1.7;color:var(--navy)}
+.dmis__x{align-self:center;font:300 22px/1 var(--ff-en);color:var(--teal)}
+.dmis__lines{display:block;width:100%;height:56px}
+.dmis__lines path{fill:none;stroke:var(--teal);stroke-width:1;vector-effect:non-scaling-stroke}
+.dmis__node{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:min(100%,280px);aspect-ratio:1;margin:0 auto;border-radius:50%;background:#fff;border:1px solid var(--navy);color:var(--navy);text-align:center}
+.dmis__ring{display:none}
+.dmis__nk{margin:0;font:600 10.5px/1.5 var(--ff-en);letter-spacing:.14em;color:var(--teal)}
+.dmis__nt{margin:6px 0 0;font-family:var(--ff-serif);font-size:clamp(19px,2.4vw,23px);font-weight:500;letter-spacing:.08em}
+.dmis__cyc{display:flex;gap:6px;margin:14px 0 0;padding:0;list-style:none}
+.dmis__cyc li{padding:1px 9px;border:1px solid var(--line);font-size:12px;color:var(--sub)}
+.dmis__cyc li:last-child{border-color:rgba(192,138,78,.55);color:var(--heat)}
+@media (min-width:768px){.dmis__issues{gap:20px}.dmis__issue{padding:22px 24px}.dmis__issue p{font-size:16px}.dmis__lines{height:84px}}
+
+/* ---------- 見出しの型（小さな日本語＋大きな英字）を落ち着かせる ---------- */
+.hd8__en{font-weight:300;font-size:clamp(30px,3.4vw,44px);line-height:1.15;letter-spacing:.01em;color:#2B3F52}
+.hd8{margin-bottom:40px}
+
+/* ---------- 04 写真カード：3 Core Pillars ---------- */
+.work--pillar .work__link{display:block}
+.work--pillar .work__media{position:relative;border:0;background:none}
+.work__no{display:inline-flex;align-items:center;gap:12px;margin:20px 0 0;font:500 12.5px/1 var(--ff-en);letter-spacing:.16em;color:var(--teal)}
+.work__no::after{content:"";width:32px;height:1px;background:currentColor;opacity:.7}
+.work--pillar .work__ttl{margin:10px 0 6px;font:300 28px/1.2 var(--ff-en);letter-spacing:0;color:var(--navy)}
+.work--pillar .work__txt{font-size:14.5px;color:var(--c-text)}
+.work--pillar .card-link{display:inline-flex;margin-top:12px}
+.work__spec{padding:12px 0 0}
+.work__speck{margin:0;font:600 10.5px/1.5 var(--ff-en);letter-spacing:.14em;color:var(--teal)}
+.work__spec ul{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:4px}
+.work__spec li{position:relative;padding-left:16px;font-size:13px;line-height:1.75;color:var(--sub)}
+.work__spec li::before{content:"";position:absolute;left:0;top:.85em;width:8px;height:1px;background:var(--teal)}
+@media (hover:hover) and (pointer:fine) and (min-width:768px){
+  .work__spec{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;background:rgba(255,255,255,.95);opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+  .work__spec li{color:var(--c-text);font-size:13.5px}
+  .work__link:hover .work__spec,.work__link:focus-visible .work__spec{opacity:1;transform:none}
+}
+@media not ((hover:hover) and (pointer:fine) and (min-width:768px)){
+  .work--pillar .work__link{display:flex;flex-direction:column}
+  .work--pillar .work__media{display:contents}
+  .work--pillar .work__media>figure{order:0}
+  .work__no{order:1}.work--pillar .work__ttl{order:2}.work--pillar .work__txt{order:3}
+  .work__spec{order:4;margin-top:12px;border-top:1px solid var(--line-weak)}
+  .work--pillar .card-link{order:5;align-self:flex-start}
+}
+.work::after{display:none}
+.work{transform:none!important}
+
+/* ---------- 05 淡い色のパネル：Node Architecture ---------- */
+.node-panel{padding:24px 16px;background:var(--g-tint)}
+.dnode{display:grid;gap:0;align-items:stretch}
+.dnode__col{padding:20px 18px;background:#fff;border:1px solid var(--line)}
+.dnode__k{margin:0;font:600 11px/1.5 var(--ff-en);letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.dnode__col>ul:not(.dnode__mods){display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;padding:0;list-style:none}
+.dnode__col>ul:not(.dnode__mods) li{padding:5px 12px;border:1px solid var(--line);font-size:14px;color:var(--c-text)}
+.dnode__col--core{position:relative;border-color:var(--navy)}
+.dnode__bldg{height:22px;margin:10px 0 0}
+.dnode__bldg svg{display:block;width:100%;height:100%}
+.dnode__bldg path{fill:none;stroke:var(--navy);stroke-width:1;vector-effect:non-scaling-stroke}
+.dnode__mods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0;padding:12px 0 0;list-style:none;border-top:1px solid var(--navy)}
+.dnode__mods li{display:flex;flex-direction:column;justify-content:center;min-height:72px;padding:10px 8px;border:1px solid var(--line);text-align:center;color:var(--navy)}
+.dnode__mods b{font-size:14px;font-weight:500}
+.dnode__mods small{font-size:11px;color:var(--sub)}
+.dnode__arw{position:relative;height:34px}
+.dnode__arw::before{content:"";position:absolute;left:50%;top:4px;bottom:8px;width:1px;background:var(--teal)}
+.dnode__arw::after{content:"";position:absolute;left:calc(50% - 4px);bottom:6px;width:8px;height:8px;border-right:1px solid var(--teal);border-bottom:1px solid var(--teal);transform:rotate(45deg)}
+@media (min-width:900px){
+  .node-panel{padding:48px 48px}
+  .dnode{grid-template-columns:minmax(0,1fr) 52px minmax(0,1.5fr) 52px minmax(0,1fr);align-items:center}
+  .dnode__col{height:100%;padding:26px 24px}
+  .dnode__col>ul:not(.dnode__mods){flex-direction:column}
+  .dnode__arw{align-self:center;height:20px}
+  .dnode__arw::before{left:6px;right:10px;top:50%;bottom:auto;width:auto;height:1px}
+  .dnode__arw::after{left:auto;right:8px;top:calc(50% - 4px);bottom:auto;transform:rotate(-45deg)}
+}
+
+/* ---------- 06 2カラム：Impact ---------- */
+.about2{background:#fff}
+.about2__ttl--en{margin-top:0;font:300 clamp(30px,3.4vw,44px)/1.15 var(--ff-en);letter-spacing:.01em;color:#2B3F52}
+.impact-list{margin:28px 0 0;padding:0;list-style:none;border-top:1px solid var(--navy)}
+.impact-list li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15.5px;font-weight:500;line-height:1.75;color:var(--navy)}
+.impact-list span{flex:none;padding-top:.25em;font:500 12px/1.6 var(--ff-en);letter-spacing:.12em;color:var(--teal)}
+.about2__visual--ph{background:none}
+.about2__visual--ph .ph{width:100%;height:100%}
+@media (min-width:640px){.about2__visual--ph .ph{aspect-ratio:auto;min-height:100%}}
+@media (max-width:639px){.about2__visual--ph{order:0}.about2__visual--ph .ph{aspect-ratio:16/10}}
+
+/* ---------- 07 紺の帯：用地募集（紺を少し和らげる） ---------- */
+.cta--recruit{background:linear-gradient(180deg,rgba(22,44,64,.92) 0%,rgba(18,38,56,.94) 100%),var(--photo) center 62%/cover no-repeat}
+.cta--recruit .cta__ttl-en{font-weight:300;letter-spacing:.24em;text-transform:uppercase}
+.cta--recruit .cta__ttl-jp{font-family:var(--ff-serif);font-size:clamp(21px,2.6vw,30px);font-weight:500;line-height:1.7;letter-spacing:.08em}
+.cta--recruit .cta__grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;max-width:760px;margin-top:32px}
+.cta--recruit .cta__phone{min-height:112px;cursor:default}
+.cta--recruit .cta__phone:hover{box-shadow:none}
+.cta--recruit .cta__phone span{font-size:13px;color:var(--teal)}
+.cta--recruit .cta__phone strong{font-family:var(--ff-base);font-size:14px;font-weight:500;color:var(--sub)}
+.cta__go{margin:28px 0 0}
+
+/* ---------- フッター・スマホ下部 ---------- */
+.ftr__nav a{font-family:var(--ff-en);font-weight:500}
+@media (max-width:767px){
+  .sp-bar--2{grid-template-columns:1fr 1fr;gap:8px}
+  .sp-bar--2 .go{border:1px solid var(--navy);background:var(--navy);color:#fff}
+}
+
+/* ---------- 動き：控えめに ---------- */
+.rv{transform:translateY(8px)!important;transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)!important}
+.rv.is-in{transform:none!important}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important}.work__spec{transition:none}}
+.hero__lead,.hero__en,.slg__body p,.work__txt,.impact-list li{word-break:auto-phrase}
+.work--pillar .work__media img{width:100%;height:100%;max-height:none;padding:0;object-fit:cover;aspect-ratio:auto}
+.work--pillar .work__media::after{display:none}
+#architecture{padding-bottom:calc(var(--sec-y) * .7)}
+#pillars{padding-bottom:calc(var(--sec-y) * .55)}
+.about2{background:#F7F7F3}
+@media (max-width:767px){
+  .hero__ja{font-size:24px;letter-spacing:.06em}
+  .dnode__mods{gap:6px}
+  .dnode__mods li{padding:10px 4px}
+  .dnode__mods b{font-size:13px;word-break:keep-all}
+}
+/* 前の版のスマホ用「写真と文章の横並び」を、柱カードには使わない */
+@media (max-width:900px){
+  .work.work--pillar{display:block}
+  .work--pillar .work__media{grid-row:auto}
+  .work--pillar .work__txt,.work--pillar .card-link{grid-column:auto}
+  .work--pillar .work__txt{margin-top:0}
+  .works{gap:48px}
+}
+/* メニューを開いたときは、メニューがサンプルの帯より手前に来るように */
+.sample-bar{z-index:9989}
