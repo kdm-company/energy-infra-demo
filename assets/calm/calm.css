@@ -251,3 +251,8 @@ main li,main dt{word-break:auto-phrase}
 .works>*,.about2__in>*{min-width:0}
 .slg__body{grid-template-columns:minmax(0,1fr)}
 @media (max-width:639px){.about2__in{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- 中国語（簡体字）：簡体字の書体で表示（Noto Sans SC・Noto Serif SC は i18n.js が中国語のときだけ読み込む） ---------- */
+html[lang="zh-CN"]{--ff-base:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;--ff-serif:"Noto Serif SC","Songti SC","STSong",serif;--ff-mincho:var(--ff-serif)}
+html[lang="zh-CN"] body{letter-spacing:.02em}
+.lang button[lang="zh-CN"]{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-weight:600}

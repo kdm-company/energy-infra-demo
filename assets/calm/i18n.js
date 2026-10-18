@@ -1,15 +1,18 @@
 /* =========================================================
    言語切り替え（日本語 / English / 简体中文）
-   ・ページの日本語をそのまま原文として持ち、英語は下の辞書で差し替える
-   ・中国語（簡体字）は本番実装で辞書を追加する想定（デモでは「準備中」）
-   ・言語は ?lang=en または前回の選択（localStorage）を引き継ぐ
+   ・ページの日本語をそのまま原文として持ち、英語・中国語はページ側の辞書で差し替える
+   ・中国語（簡体字）は window.I18N_ZH があるページだけで切り替えられる（無いページは「準備中」）
+   ・言語は ?lang=en / ?lang=zh または前回の選択（localStorage）を引き継ぐ
    ========================================================= */
 (function () {
-  // 英語の辞書はページ側（暗号化されたHTMLの中）で window.I18N_EN として渡す
+  // 辞書はページ側で window.I18N_EN / window.I18N_ZH として渡す
   var EN = window.I18N_EN || {};
-  var DICT = { en: EN };
-  var SUPPORTED = ['ja', 'en'];      // デモで切り替えられる言語
-  var PLANNED = ['zh'];              // 本番で追加する言語
+  var ZH = window.I18N_ZH || null;
+  var DICT = { en: EN, zh: ZH };
+  var SUPPORTED = ZH ? ['ja', 'en', 'zh'] : ['ja', 'en'];   // 切り替えられる言語
+  var PLANNED = ZH ? [] : ['zh'];                           // 辞書がまだ無い言語
+  var HTML_LANG = { ja: 'ja', en: 'en', zh: 'zh-CN' };     // html の lang（中国語は簡体字の字形で表示させる）
+  var ZH_FONT = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500&display=swap';
   var STORE = 'preview-site-lang';
   var ATTRS = ['aria-label', 'alt', 'title', 'placeholder', 'content'];
 
@@ -37,10 +40,11 @@
     var dict = DICT[current];
     if (!dict) return;
     root = root || document;
-    // data-en を持つ要素は中身ごと差し替え（住所など改行を含むもの）
-    Array.prototype.forEach.call(root.querySelectorAll('[data-en]'), function (el) {
+    // data-en / data-zh を持つ要素は中身ごと差し替え（住所や改行を含む見出しなど）
+    var attr = 'data-' + current;
+    Array.prototype.forEach.call(root.querySelectorAll('[' + attr + ']'), function (el) {
       touched.push({ type: 'html', node: el, orig: el.innerHTML });
-      el.innerHTML = el.getAttribute('data-en');
+      el.innerHTML = el.getAttribute(attr);
     });
     // テキスト
     var base = root === document ? document.documentElement : root;
@@ -48,7 +52,7 @@
       acceptNode: function (n) {
         var p = n.parentNode;
         if (!p || /^(SCRIPT|STYLE|NOSCRIPT)$/.test(p.nodeName)) return NodeFilter.FILTER_REJECT;
-        if (p.closest && p.closest('[data-i18n-skip],[data-en]')) return NodeFilter.FILTER_REJECT;
+        if (p.closest && p.closest('[data-i18n-skip],[' + attr + ']')) return NodeFilter.FILTER_REJECT;
         return n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
       }
     });
@@ -84,7 +88,12 @@
     if (SUPPORTED.indexOf(lang) < 0) return;
     restore();
     current = lang;
-    document.documentElement.lang = lang;
+    document.documentElement.lang = HTML_LANG[lang] || lang;
+    if (lang === 'zh' && !document.getElementById('zh-font')) {
+      var l = document.createElement('link');
+      l.id = 'zh-font'; l.rel = 'stylesheet'; l.href = ZH_FONT;
+      document.head.appendChild(l);
+    }
     if (lang !== 'ja') translate(document);
     syncButtons();
     try { localStorage.setItem(STORE, lang); } catch (e) {}
