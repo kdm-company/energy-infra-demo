@@ -1,8 +1,8 @@
 /* =========================================================
-   デザインサンプル「落ち着いた方向」（TOP のみ）
-   kdm-preview-2610 の base.css・preview.css に重ねる上書き
+   落ち着いた方向（2026-10 先方了承）の共通の上書き
+   kdm-preview-2610 の base.css・preview.css に重ねる
    ・構図はそのまま。色・文字・余白・動きの調子だけを落ち着かせる
-   ・図解（対比図・構成図）は今の TOP の形のまま、細線で主張しすぎない扱いに
+   ・図解（対比図・構成図）は細線で、主張しすぎない扱いに
    ========================================================= */
 :root{
   --c-text:#1F2A33;--c-text-sub:#5E6A72;--c-text-mute:#87939B;
@@ -14,26 +14,14 @@
   --line:#DADDD8;--line-weak:#E8EAE5;--text:#1F2A33;--sub:#5E6A72;--mute:#87939B;
   --ff-serif:"Noto Serif JP","Hiragino Mincho ProN",serif;
   --ease:cubic-bezier(.2,.7,.2,1);
+  /* 見出し帯・用地募集の帯に薄く敷く写真（このCSSからの相対パス） */
+  --photo:url('../../img/cg01-warehouse-dc.jpg');
 }
 @media (max-width:767px){:root{--sec-y:88px}}
 body{line-height:2;color:var(--c-text)}
 main p,main li,main dd{text-wrap:pretty}
 main h1,main h2,main h3,main b,main strong{text-wrap:balance;word-break:auto-phrase}
 main li,main dt{word-break:auto-phrase}
-
-/* サンプルの表示帯 */
-.is-sample .hdr{top:34px}
-.sample-bar{position:fixed;top:0;left:0;right:0;z-index:9991;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2px 16px;height:34px;padding:0 16px;background:#E9EAE4;font-size:12px;line-height:1.4;color:var(--sub)}
-.sample-bar p{margin:0}
-.sample-bar a{color:var(--navy);font-weight:700;border-bottom:1px solid currentColor}
-.is-sample main{padding-top:34px}
-@media (max-width:1080px){
-  .sample-bar{justify-content:flex-start;height:44px;padding:0 16px;font-size:11.5px}
-  .is-sample .hdr{top:44px}
-  .is-sample main{padding-top:44px}
-  .is-sample .burger{top:44px}
-  .is-sample.is-menu-open .burger{top:0}
-}
 
 /* ---------- 差し込み口・写真枠 ---------- */
 .pending{display:inline-block;padding:1px 10px;border:1px dashed currentColor;font-size:.86em;font-weight:500;letter-spacing:.03em;opacity:.72;line-height:1.7}
@@ -69,7 +57,7 @@ main li,main dt{word-break:auto-phrase}
 /* ---------- 01 ヒーロー：写真1枚、中央に明朝のコピー ---------- */
 .hero--calm{height:780px}
 .hero--calm .hero__ph{transform:none!important;transition:none!important}
-.hero--calm .hero__ph::before{background:linear-gradient(180deg,rgba(8,24,39,.5) 0%,rgba(8,24,39,.3) 40%,rgba(8,24,39,.38) 70%,rgba(8,24,39,.62) 100%)}
+.hero--calm .hero__ph::before{background:linear-gradient(180deg,rgba(8,24,39,.56) 0%,rgba(8,24,39,.44) 40%,rgba(8,24,39,.48) 70%,rgba(8,24,39,.66) 100%)}
 .hero--calm .hero__catch{position:absolute;left:0;right:0;top:50%;transform:translateY(-58%);padding:0 24px;font-family:var(--ff-base);letter-spacing:0;text-shadow:0 1px 16px rgba(6,10,16,.35);animation:none}
 .hero__en{margin:0 auto;max-width:28em;font:300 clamp(15px,1.5vw,19px)/1.6 var(--ff-en);letter-spacing:.06em;color:rgba(255,255,255,.88)}
 .hero__ja{margin:18px 0 0;font-family:var(--ff-serif);font-size:clamp(27px,3.5vw,44px);font-weight:500;line-height:1.6;letter-spacing:.14em;color:#fff}
@@ -239,5 +227,20 @@ main li,main dt{word-break:auto-phrase}
   .work--pillar .work__txt{margin-top:0}
   .works{gap:48px}
 }
-/* メニューを開いたときは、メニューがサンプルの帯より手前に来るように */
-.sample-bar{z-index:9989}
+
+/* ---------- 生成CGの写真：右下に「画像はイメージです」 ---------- */
+.photo{background:#ECEEEA}
+.photo--ai figcaption.photo__note{position:absolute;right:10px;bottom:8px;margin:0;padding:0;font-size:10px;line-height:1.5;letter-spacing:.06em;color:rgba(255,255,255,.82);text-shadow:0 1px 6px rgba(6,10,16,.55);pointer-events:none}
+
+/* ---------- ヒーローの注記：一行だけ ---------- */
+.hero--calm .hero__note{font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.7)}
+
+/* ---------- 用地募集：目安の値 ---------- */
+.cta--recruit .cta__phone strong.cta__val{font-family:var(--ff-en);font-size:30px;font-weight:300;letter-spacing:.02em;color:var(--navy)}
+.cta--recruit .cta__phone small.cta__hint{display:block;font-size:12px;color:var(--mute)}
+
+/* ---------- 下層ページの見出し帯：番号は小さく、光は3割ほど淡く ---------- */
+.page-head__en span{margin-right:12px;font-size:11px;letter-spacing:.14em;opacity:.75}
+.page-head .ph-glow{opacity:.7}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:10000;padding:8px 14px;background:#fff;color:var(--navy)}
