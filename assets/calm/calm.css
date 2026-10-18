@@ -256,3 +256,8 @@ main li,main dt{word-break:auto-phrase}
 html[lang="zh-CN"]{--ff-base:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;--ff-serif:"Noto Serif SC","Songti SC","STSong",serif;--ff-mincho:var(--ff-serif)}
 html[lang="zh-CN"] body{letter-spacing:.02em}
 .lang button[lang="zh-CN"]{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-weight:600}
+
+/* ---------- 用地募集：固定の条件は出さず、個別相談の文章に（2026-10-18） ---------- */
+.cta--recruit .cta__txt--recruit{max-width:40em;margin:24px auto 0;font-size:15px;line-height:2.05;color:rgba(255,255,255,.86)}
+@media (max-width:767px){.cta--recruit .cta__txt--recruit{margin-top:18px;font-size:14px}}
+.pnews__meta .pending{font-family:var(--ff-base);font-size:11px;letter-spacing:.04em}
