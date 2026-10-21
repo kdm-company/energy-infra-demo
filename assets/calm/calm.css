@@ -261,3 +261,13 @@ html[lang="zh-CN"] body{letter-spacing:.02em}
 .cta--recruit .cta__txt--recruit{max-width:40em;margin:24px auto 0;font-size:15px;line-height:2.05;color:rgba(255,255,255,.86)}
 @media (max-width:767px){.cta--recruit .cta__txt--recruit{margin-top:18px;font-size:14px}}
 .pnews__meta .pending{font-family:var(--ff-base);font-size:11px;letter-spacing:.04em}
+
+/* ---------- 白黒の建築スケッチ（2026-10-21〜）：地が透明の線画（WebP）。線だけをページの地の上に見せる ---------- */
+.photo--sketch{background:transparent}
+.photo--sketch img{object-fit:contain}
+.photo--sketch figcaption.photo__note{color:var(--mute);text-shadow:none}
+.work--pillar .photo--sketch img{object-fit:contain}
+/* カードの中のスケッチは下にそろえ、見出しとの間をそろえる */
+.work--pillar .photo--sketch img,.target .photo--sketch img{object-position:50% 100%}
+/* スマホ・タブレット（柱カードが1列）：スケッチは絵の比率のまま出し、上に余白を作らない */
+@media (max-width:900px){.work--pillar .photo--sketch{aspect-ratio:auto}.work--pillar .photo--sketch img{height:auto}}
