@@ -271,3 +271,9 @@ html[lang="zh-CN"] body{letter-spacing:.02em}
 .work--pillar .photo--sketch img,.target .photo--sketch img{object-position:50% 100%}
 /* スマホ・タブレット（柱カードが1列）：スケッチは絵の比率のまま出し、上に余白を作らない */
 @media (max-width:900px){.work--pillar .photo--sketch{aspect-ratio:auto}.work--pillar .photo--sketch img{height:auto}}
+
+/* ---------- 英語：ヒーローの大見出しは先方支給の英文を Helvetica の細めで。上の小さな英文は重なるので出さない ---------- */
+html[lang="en"] .hero--calm .hero__en{display:none}
+html[lang="en"] .hero--calm .hero__ja{font-family:var(--ff-en);font-weight:300;font-size:clamp(30px,4.4vw,56px);line-height:1.22;letter-spacing:.005em}
+html[lang="en"] .hero--calm .hero__lead{margin-top:24px}
+.pnews__meta .pending,.pnews__cat{white-space:nowrap}
