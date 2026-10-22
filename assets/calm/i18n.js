@@ -12,7 +12,7 @@
   var SUPPORTED = ZH ? ['ja', 'en', 'zh'] : ['ja', 'en'];   // 切り替えられる言語
   var PLANNED = ZH ? [] : ['zh'];                           // 辞書がまだ無い言語
   var HTML_LANG = { ja: 'ja', en: 'en', zh: 'zh-CN' };     // html の lang（中国語は簡体字の字形で表示させる）
-  var ZH_FONT = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500&display=swap';
+  var ZH_FONT = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap';
   var STORE = 'preview-site-lang';
   var ATTRS = ['aria-label', 'alt', 'title', 'placeholder', 'content'];
 

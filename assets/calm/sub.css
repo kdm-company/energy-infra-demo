@@ -9,7 +9,7 @@
   --paper:#F6F6F2;--white:#fff;--ff:var(--ff-base);
   --hdr:64px;--sec:var(--sec-y);
 }
-@media (min-width:1081px){:root{--hdr:96px}}
+@media (min-width:901px){:root{--hdr:96px}}
 html{scroll-padding-top:calc(var(--hdr) + 56px)}
 main h4{text-wrap:balance;word-break:auto-phrase}
 main td,main th{text-wrap:pretty}
@@ -75,7 +75,7 @@ main td,main th{text-wrap:pretty}
 .tech__ttl[lang="en"],.tech__ttl--en{font-family:var(--ff-en);font-weight:300;letter-spacing:.01em}
 .tech__txt{margin-top:16px;font-size:15.5px;line-height:2;color:var(--sub)}
 .tech__body{display:grid;gap:24px;margin-top:36px;grid-template-columns:minmax(0,1fr)}
-@media (min-width:1081px){.tech .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start}.tech__head{position:sticky;top:calc(var(--hdr) + 80px)}.tech__body{margin-top:0}}
+@media (min-width:1081px){.tech .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start}.tech__head{position:static}.tech__body{margin-top:0}}
 /* 建築・空間コンバージョン */
 .dconv{padding:20px;background:#fff;border:1px solid var(--line)}
 .dconv__svg{width:100%;height:auto}
@@ -354,3 +354,20 @@ main td,main th{text-wrap:pretty}
 .art2__body .art2__lead{font-family:var(--ff-serif);font-size:17px;font-weight:500;line-height:1.9;letter-spacing:.04em;color:var(--navy)}
 .art2__body .sub2{margin-top:48px}
 .art2__body .spec2{margin-top:4px}
+
+/* ---------- 2026-10-22 web修正依頼 ---------- */
+/* 改修断面の図：参考図をシンプルにした線画。言葉は図の上に HTML で重ねる */
+.dconv__stage{position:relative}
+.dconv__svg circle{fill:none;stroke:var(--navy);stroke-width:1}
+.dconv__svg .dc-frame{stroke-width:1.3}
+.dconv__svg .dc-ground{stroke:var(--mute)}
+.dconv__svg .dc-thin{stroke:var(--mute);stroke-width:.8}
+.dconv__svg .dc-slab,.dconv__svg .dc-foot{stroke:var(--navy)}
+.dconv__svg .dc-spring,.dconv__svg .dc-wave,.dconv__svg .dc-panel,.dconv__svg .dc-pipe{stroke:var(--teal)}
+.dconv__svg .dc-heat{stroke:var(--heat);stroke-dasharray:5 5}
+.dconv__svg .dc-heat-head{fill:none;stroke:var(--heat);stroke-width:1.2}
+.dconv__lab{position:absolute;transform:translateY(-50%);padding:0 4px;background:rgba(255,255,255,.88);font-size:12.5px;font-weight:500;line-height:1.6;white-space:nowrap;color:var(--navy)}
+@media (max-width:767px){.dconv__lab{font-size:11px;padding:0 2px}}
+/* 冷却の図・エネルギー最適化AI：語の途中で折り返さない */
+.dcool__box b .nw,.dems__core b .nw{display:inline-block}
+.dems__core b{font-size:clamp(18px,2vw,22px);font-weight:400;line-height:1.45}

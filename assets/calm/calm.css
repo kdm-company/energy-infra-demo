@@ -253,9 +253,8 @@ main li,main dt{word-break:auto-phrase}
 @media (max-width:639px){.about2__in{grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- 中国語（簡体字）：簡体字の書体で表示（Noto Sans SC・Noto Serif SC は i18n.js が中国語のときだけ読み込む） ---------- */
-html[lang="zh-CN"]{--ff-base:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;--ff-serif:"Noto Serif SC","Songti SC","STSong",serif;--ff-mincho:var(--ff-serif)}
+html[lang="zh-CN"]{--ff-sys:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;--ff-base:var(--ff-sys);--ff-serif:var(--ff-sys);--ff-mincho:var(--ff-sys)}
 html[lang="zh-CN"] body{letter-spacing:.02em}
-.lang button[lang="zh-CN"]{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-weight:600}
 
 /* ---------- 用地募集：固定の条件は出さず、個別相談の文章に（2026-10-18） ---------- */
 .cta--recruit .cta__txt--recruit{max-width:40em;margin:24px auto 0;font-size:15px;line-height:2.05;color:rgba(255,255,255,.86)}
@@ -282,3 +281,42 @@ html[lang="en"] .hero--calm .hero__lead{margin-top:24px}
 .node-cap{margin:0 0 14px;font-size:12.5px;font-weight:500;letter-spacing:.08em;color:var(--teal)}
 .node-note{margin:12px 0 0;font-size:12.5px;line-height:1.9;color:var(--mute)}
 @media (min-width:900px){.node-cap{margin-bottom:18px}}
+
+/* =========================================================
+   2026-10-22 web修正依頼
+   ========================================================= */
+/* 書体の統一：Apple のサイトのような柔らかいゴシック（Mac・iPhone はヒラギノ角ゴ＋SF、それ以外は Noto Sans JP）。明朝はやめる */
+:root{
+  --ff-sys:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Segoe UI","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
+  --ff-base:var(--ff-sys);--ff-mincho:var(--ff-sys);--ff-serif:var(--ff-sys);--ff-en:var(--ff-sys);--ff-en-head:var(--ff-sys);
+}
+body{font-family:var(--ff-sys)}
+.hero__ja{font-weight:500;letter-spacing:.06em}
+.slg__main,.cta--recruit .cta__ttl-jp,.dmis__nt,.page-head__ttl{letter-spacing:.04em}
+.page-head__ttl{font-weight:500}
+
+/* メニュー：横幅 901〜1120px でも横並びで収まるように詰める（900px 以下は MENU ボタン） */
+@media (min-width:901px) and (max-width:1120px){
+  .hdr__inner{padding:0 16px}
+  .hdr__logo img{width:132px;height:32px}
+  .gnav{padding-left:16px}
+  .gnav__menu{font-size:13.5px}
+  .gnav__link{padding:0 9px}
+  .gnav__menu li.is-current>.gnav__link::after{left:9px;right:9px}
+  .gnav__cta{margin-left:4px}
+  .gnav__cta a{min-width:0;padding:16px 18px}
+  .lang{margin-left:10px}
+  .lang button{padding:0 8px}
+}
+
+/* 画面下の固定バー（電話する・お問い合わせ）をやめたので、フッター下の余白を戻す */
+.sp-bar{display:none!important}
+@media (max-width:767px){.ftr__bottom{padding-bottom:calc(24px + env(safe-area-inset-bottom))}}
+
+/* 構成図：スマホでは内部の3つを縦に並べ、語の途中で折り返さない */
+.dnode__mods b .nw{display:inline-block}
+@media (max-width:767px){
+  .dnode__mods{grid-template-columns:minmax(0,1fr)}
+  .dnode__mods li{min-height:0;padding:10px 12px}
+  .dnode__mods b{font-size:14px;word-break:normal}
+}

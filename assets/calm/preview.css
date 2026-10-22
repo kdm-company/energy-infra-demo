@@ -17,7 +17,7 @@ body{overflow-x:clip}
 .gnav__sub a:hover,.gnav__sub a:focus-visible{background:var(--c-tint);color:var(--c-brand)}
 .gnav__menu li.has-sub:hover .gnav__sub,.gnav__menu li.has-sub:focus-within .gnav__sub{opacity:1;visibility:visible;transform:none}
 .gnav__menu li.is-current>.gnav__link{color:var(--c-brand)}
-@media (max-width:1080px){
+@media (max-width:900px){
   .gnav__sub{position:static;min-width:0;padding:0 0 10px 4px;background:none;border:0;box-shadow:none;opacity:1;visibility:visible;transform:none}
   .gnav__sub a{padding:9px 0 9px 18px;font-size:14px;color:rgba(255,255,255,.78);border-left:1px solid rgba(255,255,255,.18)}
   .gnav__sub a:hover{background:none;color:#fff}
@@ -292,7 +292,7 @@ body{overflow-x:clip}
 
 /* ---------- ヘッダー：PC幅が狭いときに項目が折り返さないように ---------- */
 .gnav__link{white-space:nowrap}
-@media (max-width:1366px) and (min-width:1081px){
+@media (max-width:1366px) and (min-width:901px){
   .gnav{padding-left:20px}
   .gnav__link{padding:0 12px;font-size:14px;letter-spacing:.06em}
   .gnav__menu li.is-current>.gnav__link::after{left:12px;right:12px}
@@ -377,7 +377,7 @@ body{overflow-x:clip}
 /* ---------- メニュー（スマホ・タブレット）：全画面・中央揃え ---------- */
 .gnav__en{display:none}
 .burger__label{display:none}
-@media (max-width:1080px){
+@media (max-width:900px){
   .burger{flex-direction:column;gap:7px}
   .burger__lines{width:22px;height:7px}
   .burger__lines span:nth-of-type(1){top:0}
@@ -403,14 +403,14 @@ body{overflow-x:clip}
   .gnav__cta a:hover{background:rgba(255,255,255,.08)}
   .gnav__tel{margin-top:14px;padding:10px;border:0;font-size:13px;font-weight:500;color:rgba(255,255,255,.7)}
 }
-@media (max-width:1080px) and (prefers-reduced-motion:reduce){.gnav,.gnav__menu li{transition:none}}
+@media (max-width:900px) and (prefers-reduced-motion:reduce){.gnav,.gnav__menu li{transition:none}}
 .ftr__addr i{display:inline-block;font-style:normal}
 .ftr__addr i+i{margin-left:.4em}
 @media (max-width:767px){.ftr__bottom{padding-bottom:calc(96px + env(safe-area-inset-bottom))}}
 
 /* ---------- ロゴ（先方支給の透過データ。縦横比 660:128） ---------- */
 .hdr__logo img{width:176px;height:auto}
-@media (max-width:1080px){.hdr__logo img{width:140px;height:auto}}
+@media (max-width:900px){.hdr__logo img{width:140px;height:auto}}
 .ftr__logo img{width:140px}
 
 /* ======================================================================
@@ -426,7 +426,7 @@ body{overflow-x:clip}
 .purpose__links strong{word-break:auto-phrase;text-wrap:balance}
 .purpose__links small{word-break:auto-phrase}
 .purpose__links b{right:20px}
-@media (max-width:1080px){.purpose__links a{padding:10px 60px 10px 20px}.purpose__links b{right:14px}}
+@media (max-width:900px){.purpose__links a{padding:10px 60px 10px 20px}.purpose__links b{right:14px}}
 @media (max-width:767px){.purpose__links a{padding:16px 56px 16px 4px}.purpose__links b{right:4px}}
 
 /* 3. 事業内容カードの手順：縦の罫線リストを2列のコンパクトな表に */
