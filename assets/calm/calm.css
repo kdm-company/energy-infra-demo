@@ -291,6 +291,7 @@ html[lang="en"] .hero--calm .hero__lead{margin-top:24px}
   --ff-base:var(--ff-sys);--ff-mincho:var(--ff-sys);--ff-serif:var(--ff-sys);--ff-en:var(--ff-sys);--ff-en-head:var(--ff-sys);
 }
 body{font-family:var(--ff-sys)}
+button,input,select,textarea{font-family:inherit}   /* ボタン類はブラウザの標準書体になるので、本文と同じ書体に */
 .hero__ja{font-weight:500;letter-spacing:.06em}
 .slg__main,.cta--recruit .cta__ttl-jp,.dmis__nt,.page-head__ttl{letter-spacing:.04em}
 .page-head__ttl{font-weight:500}
