@@ -9,7 +9,7 @@
   --paper:#F6F6F2;--white:#fff;--ff:var(--ff-base);
   --hdr:64px;--sec:var(--sec-y);
 }
-@media (min-width:901px){:root{--hdr:96px}}
+@media (min-width:768px){:root{--hdr:96px}}
 html{scroll-padding-top:calc(var(--hdr) + 56px)}
 main h4{text-wrap:balance;word-break:auto-phrase}
 main td,main th{text-wrap:pretty}

@@ -159,3 +159,12 @@
   init();
   if (reduce) draw(0); else start();
 })();
+
+// 幅を広げて MENU ボタンが消えたら、開いていたメニューを閉じる（build_calm.py で追記）
+(() => {
+  const burger = document.querySelector('.burger');
+  if (!burger) return;
+  matchMedia('(min-width:768px)').addEventListener('change', e => {
+    if (e.matches && burger.getAttribute('aria-expanded') === 'true') burger.click();
+  });
+})();

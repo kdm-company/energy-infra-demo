@@ -295,8 +295,8 @@ body{font-family:var(--ff-sys)}
 .slg__main,.cta--recruit .cta__ttl-jp,.dmis__nt,.page-head__ttl{letter-spacing:.04em}
 .page-head__ttl{font-weight:500}
 
-/* メニュー：横幅 901〜1120px でも横並びで収まるように詰める（900px 以下は MENU ボタン） */
-@media (min-width:901px) and (max-width:1120px){
+/* メニュー：横幅 768〜1120px でも横並びで収まるように詰める（767px 以下は MENU ボタン） */
+@media (min-width:768px) and (max-width:1120px){
   .hdr__inner{padding:0 16px}
   .hdr__logo img{width:132px;height:32px}
   .gnav{padding-left:16px}
@@ -308,6 +308,20 @@ body{font-family:var(--ff-sys)}
   .lang{margin-left:10px}
   .lang button{padding:0 8px}
 }
+@media (min-width:768px) and (max-width:940px){
+  .hdr__inner{padding:0 12px}
+  .hdr__logo img{width:112px;height:27px}
+  .gnav{padding-left:8px}
+  .gnav__menu{font-size:12.5px}
+  .gnav__link{padding:0 6px}
+  .gnav__menu li.is-current>.gnav__link::after{left:6px;right:6px}
+  .gnav__cta a{padding:14px 12px}
+  .lang{margin-left:8px}
+  .lang button{padding:0 6px}
+}
+
+/* メニューを開いたまま幅を広げたとき、スクロールが止まったままにならないように（site.js でもメニューを閉じる） */
+@media (min-width:768px){html.is-menu-open,body.is-menu-open{overflow:visible}}
 
 /* 画面下の固定バー（電話する・お問い合わせ）をやめたので、フッター下の余白を戻す */
 .sp-bar{display:none!important}
