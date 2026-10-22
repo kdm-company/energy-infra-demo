@@ -277,3 +277,8 @@ html[lang="en"] .hero--calm .hero__en{display:none}
 html[lang="en"] .hero--calm .hero__ja{font-family:var(--ff-en);font-weight:300;font-size:clamp(30px,4.4vw,56px);line-height:1.22;letter-spacing:.005em}
 html[lang="en"] .hero--calm .hero__lead{margin-top:24px}
 .pnews__meta .pending,.pnews__cat{white-space:nowrap}
+
+/* ---------- 構成図：「目指す拠点モデル（構想図）」と注記（2026-10-22 先方指示） ---------- */
+.node-cap{margin:0 0 14px;font-size:12.5px;font-weight:500;letter-spacing:.08em;color:var(--teal)}
+.node-note{margin:12px 0 0;font-size:12.5px;line-height:1.9;color:var(--mute)}
+@media (min-width:900px){.node-cap{margin-bottom:18px}}

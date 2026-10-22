@@ -349,3 +349,8 @@ main td,main th{text-wrap:pretty}
 .art2__list li{font-size:15.5px;line-height:2}
 .art2__list li::marker{color:var(--teal);font-family:var(--ff-en)}
 .nitem__meta .pending,.art2__meta .pending{font-family:var(--ff);font-size:11.5px;letter-spacing:.04em}
+/* お知らせ記事：発表日とリード文 */
+.art2__dateline{font-size:13px;letter-spacing:.04em;color:var(--mute)}
+.art2__body .art2__lead{font-family:var(--ff-serif);font-size:17px;font-weight:500;line-height:1.9;letter-spacing:.04em;color:var(--navy)}
+.art2__body .sub2{margin-top:48px}
+.art2__body .spec2{margin-top:4px}
