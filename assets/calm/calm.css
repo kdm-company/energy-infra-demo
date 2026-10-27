@@ -296,8 +296,8 @@ button,input,select,textarea{font-family:inherit}   /* ボタン類はブラウ�
 .slg__main,.cta--recruit .cta__ttl-jp,.dmis__nt,.page-head__ttl{letter-spacing:.04em}
 .page-head__ttl{font-weight:500}
 
-/* メニュー：横幅 768〜1120px でも横並びで収まるように詰める（767px 以下は MENU ボタン） */
-@media (min-width:768px) and (max-width:1120px){
+/* メニュー：横幅 900〜1120px でも横並びで収まるように詰める（899px 以下は MENU ボタン。2026-10-27 に 767px から変更） */
+@media (min-width:900px) and (max-width:1120px){
   .hdr__inner{padding:0 16px}
   .hdr__logo img{width:132px;height:32px}
   .gnav{padding-left:16px}
@@ -309,7 +309,7 @@ button,input,select,textarea{font-family:inherit}   /* ボタン類はブラウ�
   .lang{margin-left:10px}
   .lang button{padding:0 8px}
 }
-@media (min-width:768px) and (max-width:940px){
+@media (min-width:900px) and (max-width:1000px){
   .hdr__inner{padding:0 12px}
   .hdr__logo img{width:112px;height:27px}
   .gnav{padding-left:8px}
@@ -322,7 +322,7 @@ button,input,select,textarea{font-family:inherit}   /* ボタン類はブラウ�
 }
 
 /* メニューを開いたまま幅を広げたとき、スクロールが止まったままにならないように（site.js でもメニューを閉じる） */
-@media (min-width:768px){html.is-menu-open,body.is-menu-open{overflow:visible}}
+@media (min-width:900px){html.is-menu-open,body.is-menu-open{overflow:visible}}
 
 /* 画面下の固定バー（電話する・お問い合わせ）をやめたので、フッター下の余白を戻す */
 .sp-bar{display:none!important}
@@ -334,4 +334,31 @@ button,input,select,textarea{font-family:inherit}   /* ボタン類はブラウ�
   .dnode__mods{grid-template-columns:minmax(0,1fr)}
   .dnode__mods li{min-height:0;padding:10px 12px}
   .dnode__mods b{font-size:14px;word-break:normal}
+}
+
+/* ---------- 2026-10-27 言語の表記をそろえる ----------
+   ・メニューは表示中の言語で（日本語・中国語は大きく、英字を小さく添える。英語は英字だけ）
+   ・言語ボタンは「日本語 / English / 中文」と、それぞれの言語で書く。全ページに置く */
+.lang button{font-family:var(--ff-sys);font-weight:500;font-size:12px;letter-spacing:.02em}
+.burger__label{text-transform:uppercase}
+html[lang="ja"] .burger__label,html[lang="zh-CN"] .burger__label{font-size:10px;letter-spacing:.08em;padding-left:.08em}
+@media (max-width:899px){
+  .lang button{font-size:11px;padding:0 7px}
+}
+@media (max-width:400px){
+  .hdr__logo img{width:118px;height:auto}
+  .lang{right:70px}
+  .lang button{font-size:10.5px;padding:0 6px}
+}
+@media (max-width:360px){
+  .hdr__logo img{width:100px}
+  .lang{right:66px}
+  .lang button{font-size:10px;padding:0 5px}
+}
+.gnav__cta a,.gnav__link{white-space:nowrap}
+@media (min-width:900px) and (max-width:1000px){
+  .gnav__link{padding:0 5px}
+  .gnav__menu li.is-current>.gnav__link::after{left:5px;right:5px}
+  .gnav__cta a{padding:14px 10px;font-size:12.5px}
+  .lang button{padding:0 5px;font-size:11px}
 }

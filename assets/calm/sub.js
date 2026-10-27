@@ -47,6 +47,14 @@
     const hit = arts.find((a) => a.dataset.id === id) || arts[0];
     hit.hidden = false;
     const ttl = hit.querySelector('.art2__ttl');
-    if (ttl) document.title = ttl.textContent + '｜株式会社ルメナスホールディングス';
+    // タブの題名：記事の見出し＋社名（言語を切り替えたら付け直す。2026-10-27）
+    const setTitle = () => {
+      if (!ttl) return;
+      const en = document.documentElement.lang === 'en';
+      const site = window.I18N ? I18N.t('株式会社ルメナスホールディングス') : '株式会社ルメナスホールディングス';
+      document.title = ttl.textContent.trim() + (en ? ' | ' : '｜') + site;
+    };
+    setTitle();
+    document.addEventListener('langchange', setTitle);
   }
 })();

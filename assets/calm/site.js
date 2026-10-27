@@ -17,7 +17,6 @@
       burger.classList.toggle('is-open', open);
       burger.setAttribute('aria-expanded', String(open));
       const label = burger.querySelector('.burger__label');
-      if (label) label.textContent = open ? 'CLOSE' : 'MENU';
       document.documentElement.classList.toggle('is-menu-open', open);
       document.body.classList.toggle('is-menu-open', open);
     };
@@ -160,11 +159,26 @@
   if (reduce) draw(0); else start();
 })();
 
+// MENU ボタンの文字（メニュー／閉じる）を、開閉と表示中の言語に合わせる（build_calm.py で追記。2026-10-27）
+(() => {
+  const burger = document.querySelector('.burger');
+  const label = burger && burger.querySelector('.burger__label');
+  if (!label) return;
+  const sync = () => {
+    const ja = burger.getAttribute('aria-expanded') === 'true' ? '閉じる' : 'メニュー';
+    label.textContent = window.I18N ? I18N.t(ja) : ja;
+  };
+  burger.addEventListener('click', () => setTimeout(sync));
+  document.querySelectorAll('.gnav a').forEach((a) => a.addEventListener('click', () => setTimeout(sync)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setTimeout(sync); });
+  document.addEventListener('langchange', sync);
+})();
+
 // 幅を広げて MENU ボタンが消えたら、開いていたメニューを閉じる（build_calm.py で追記）
 (() => {
   const burger = document.querySelector('.burger');
   if (!burger) return;
-  matchMedia('(min-width:768px)').addEventListener('change', e => {
+  matchMedia('(min-width:900px)').addEventListener('change', e => {
     if (e.matches && burger.getAttribute('aria-expanded') === 'true') burger.click();
   });
 })();

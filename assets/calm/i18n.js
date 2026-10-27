@@ -14,7 +14,7 @@
   var HTML_LANG = { ja: 'ja', en: 'en', zh: 'zh-CN' };     // html の lang（中国語は簡体字の字形で表示させる）
   var ZH_FONT = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap';
   var STORE = 'preview-site-lang';
-  var ATTRS = ['aria-label', 'alt', 'title', 'placeholder', 'content'];
+  var ATTRS = ['aria-label', 'alt', 'title', 'placeholder', 'content', 'href'];   // href はメールの件名（mailto:）だけ訳す
 
   var current = 'ja';
   var touched = [];
@@ -70,6 +70,7 @@
       Array.prototype.forEach.call(scope.querySelectorAll('[' + name + ']'), function (el) {
         if (el.closest('[data-i18n-skip]')) return;
         if (name === 'content' && el.getAttribute('name') !== 'description') return;
+        if (name === 'href' && el.getAttribute('href').indexOf('mailto:') !== 0) return;
         var v = el.getAttribute(name);
         if (dict[v] == null) return;
         touched.push({ type: 'attr', node: el, name: name, orig: v });
