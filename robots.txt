@@ -1,2 +1,8 @@
 User-agent: *
-Disallow: /
+Disallow: /admin/
+Disallow: /demo/
+Disallow: /blog/
+Disallow: /archive/
+Disallow: /sample-calm/
+Disallow: /v2/
+Disallow: /v3/
